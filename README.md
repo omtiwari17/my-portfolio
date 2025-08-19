@@ -26,5 +26,5 @@ The website is fully responsive and designed to provide a smooth user experience
 ## 📧 Contact
 
 * **Email:** [work.om.tiwari@gmail.com](mailto:work.om.tiwari@gmail.com)
-* **LinkedIn:** [Your Profile](https://www.linkedin.com/in/tiwariom/)
-* **GitHub:** [@yourusername](https://github.com/omtiwari17)
+* **LinkedIn:** [tiwariom](https://www.linkedin.com/in/tiwariom/)
+* **GitHub:** [@omtiwari17](https://github.com/omtiwari17)
