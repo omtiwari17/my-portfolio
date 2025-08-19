@@ -22,7 +22,7 @@ img{max-width:100%;display:block}
 .container{width:min(1100px,92%);margin:0 auto;padding:2rem 0}
 .site-header{position:sticky;top:0;z-index:20;background:rgba(11,16,32,0.6);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.75rem 4%}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:600}
-.brand .logo{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#0ea5e9,#7c3aed);box-shadow:var(--shadow)}
+.brand .logo{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#0ea5e9,#7c3aed);box-shadow:var(--shadow);font-family: 'Shadows Into Light', cursive;   font-weight: 700; font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; color: #fff; }
 .nav{display:flex;gap:1rem}
 .nav a{padding:.4rem .7rem;border-radius:10px;position:relative;overflow:hidden}
 .nav a::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(56,189,248,.25),transparent);transform:translateX(-120%);transition:transform .4s}
@@ -123,18 +123,10 @@ input:focus,textarea:focus{outline:2px solid #1d4ed8;box-shadow:0 0 0 4px rgba(2
   .skills-grid{grid-template-columns:1fr}
   .resume-grid{grid-template-columns:1fr}
 
-  .nav {
-    display: none;
-    position: absolute;
-    right: 4%;
-    top: 60px;
-    background: #0a0f1f;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: .6rem;
-    flex-direction: column;
-    box-shadow: var(--shadow);
-  }
+  .nav { display: none; position: absolute; right: 4%; top: 60px;
+         background: #0a0f1f; border: 1px solid var(--border); border-radius: 12px;
+         padding: .6rem; flex-direction: column; box-shadow: var(--shadow); }
+  .nav.open { display: flex; }
   .nav.open { display: flex; }
 
   /* 👇 Make hamburger visible and clickable */
@@ -142,10 +134,10 @@ input:focus,textarea:focus{outline:2px solid #1d4ed8;box-shadow:0 0 0 4px rgba(2
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;     /* makes ☰ larger */
+    min-width: 40px;
+    min-height: 40px;
     line-height: 1;
-    min-width: 38px;       /* ensures tap area */
-    min-height: 38px;
+    font-size: 1.4rem; /* safe even if SVG fails */
   }
 
   .hero-cta { gap: .6rem; }
