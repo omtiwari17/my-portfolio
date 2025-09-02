@@ -123,12 +123,20 @@ input:focus,textarea:focus{outline:2px solid #1d4ed8;box-shadow:0 0 0 4px rgba(2
   .skills-grid{grid-template-columns:1fr}
   .resume-grid{grid-template-columns:1fr}
 
-  .nav { display: none; position: absolute; right: 4%; top: 60px;
-         background: #0a0f1f; border: 1px solid var(--border); border-radius: 12px;
-         padding: .6rem; flex-direction: column; box-shadow: var(--shadow); }
+  .nav {
+    display: none;
+    position: absolute;
+    right: 4%;
+    top: 60px;
+    background: var(--bg-soft);      /* ← was #0a0f1f */
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: .6rem;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+  }
   .nav.open { display: flex; }
-  .nav.open { display: flex; }
-
+  
   /* 👇 Make hamburger visible and clickable */
   #menuToggle {
     display: inline-flex !important;
