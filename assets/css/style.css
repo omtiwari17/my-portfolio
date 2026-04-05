@@ -291,3 +291,25 @@ input:focus,textarea:focus{outline:2px solid #1d4ed8;box-shadow:0 0 0 4px rgba(2
     width:64px;
   }
 }
+
+
+/* --- Resume Project Links --- */
+.muted-links {
+  font-size: 0.85rem;
+  margin-left: 8px;
+}
+
+.muted-links a {
+  color: var(--text-secondary, #94a3b8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.muted-links a:hover {
+  color: var(--accent-blue, #0ea5e9);
+  text-decoration: underline;
+}
+
+.muted-links .accent {
+  font-weight: 600;
+}
