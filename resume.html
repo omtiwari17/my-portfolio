@@ -8,8 +8,7 @@
   <title>Resume · Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600&family=Shadows+Into+Light&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
   <script defer src="assets/js/main.js"></script>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -37,7 +36,9 @@
   <a class="btn ripple" href="https://drive.google.com/file/d/18owlzaFUBIx4SAxCxFJ_gebr63oCdaqJ/view?usp=sharing" download>⬇ Download Resume (PDF)</a>
   <p class="muted">A quick overview of my experience and skills. Click the button above to download my resume in PDF format.</p>
   <div class="resume-grid">
-    <section>
+
+    <!-- LEFT COLUMN: Internship → Education -->
+    <section class="resume-left">
       <h2>Internship</h2>
       <div class="card hover glow tilt">
         <h3>Amazon Web Service · <span class="accent">Credly</span></h3>
@@ -49,52 +50,88 @@
           <li>Technologies: AWS EC2, S3, IAM, VPC, Cloud Architecture Principles</li>
         </ul>
       </div>
-    </section>
 
-    <section>
-  <h2>Skills</h2>
-  <ul class="bullets two-col">
-    <li>Python</li>
-    <li>Django</li>
-    <li>Cloud (AWS EKS, EC2, S3)</li>
-    <li>DevOps (Docker, Kubernetes)</li>
-    <li>CI/CD (GitHub Actions)</li>
-    <li>AI (CrewAI, Gemini LLM)</li>
-    <li>MySQL & DBMS</li>
-    <li>Git & Version Control</li>
-  </ul>
-</section>
-    <section>
-      <h2>Education</h2>
-      <div class="card hover glow tilt" >
-        <h3>B.Tech in Computer Science</h3>
-        <p class="muted">Medi-Caps University, Indore · 2022 - 2026</p>
-      </div>
+      <h2 style="margin-top:1.75rem;">Education</h2>
       <div class="card hover glow tilt">
+        <h3>B.Tech in Computer Science</h3>
+        <p class="muted">Medi-Caps University, Indore · 2022 – 2026</p>
+      </div>
+      <div class="card hover glow tilt" style="margin-top:.75rem;">
         <h3>12th (CBSE) PCM + Computer Science</h3>
-        <p class="muted">Carmel Convent H.S School, Indore · 2021 - 2022</p>
+        <p class="muted">Carmel Convent H.S School, Indore · 2021 – 2022</p>
       </div>
     </section>
 
-    <section>
-      <h2><a href="projects.html">Projects</a></h2>
+    <!-- RIGHT COLUMN: Skills → Projects -->
+    <section class="resume-right">
+      <h2>Skills</h2>
+      <ul class="bullets two-col">
+        <li>Python</li>
+        <li>Django</li>
+        <li>Cloud (AWS EKS, EC2, S3)</li>
+        <li>DevOps (Docker, Kubernetes)</li>
+        <li>CI/CD (GitHub Actions)</li>
+        <li>AI (CrewAI, Gemini LLM)</li>
+        <li>MySQL &amp; DBMS</li>
+        <li>Git &amp; Version Control</li>
+      </ul>
+
+      <h2 style="margin-top:1.75rem;"><a href="projects.html">Projects</a></h2>
       <ul class="bullets">
         <li>Deploy Manufacturing App to Kubernetes <span class="muted-links">[<a href="https://github.com/omtiwari17/Deploy-Manufacturing-App-to-Kubernetes" target="_blank">GitHub</a>]</span></li>
-        <li>
-          Live Cricket WinPulse 
+        <li>Live Cricket WinPulse
           <span class="muted-links">
-            [<a href="https://github.com/omtiwari17/live-cricket-winpulse" target="_blank">GitHub</a>] 
+            [<a href="https://github.com/omtiwari17/live-cricket-winpulse" target="_blank">GitHub</a>]
             [<a href="https://live-cricket-winpulse.onrender.com" target="_blank" class="accent-link">Live Demo</a>]
           </span>
         </li>
         <li>Multi-Agent Manufacturing System <span class="muted-links">[<a href="https://github.com/omtiwari17/Multi-agent-system" target="_blank">GitHub</a>]</span></li>
-        <li>Patient Depict System<span class="muted-links">[<a href="https://github.com/omtiwari17/Multi-agent-system" target="_blank">GitHub</a>]</span></li>
-        <li>Find My Book.<span class="muted-links">[<a href="https://github.com/omtiwari17/Find_My_Book" target="_blank">GitHub</a>]</span></li>
-        <li>Smart Traffic - Automated E-Challan Generator <span class="muted-links">[<a href="https://github.com/omtiwari17/Smart_Traffic_System" target="_blank">GitHub</a>]</span></li>
-        <li>Banking System<span class="muted-links">[<a href="https://github.com/omtiwari17/BANKING_SYSTEM" target="_blank">GitHub</a>]</span></li>
-        <li>Personal Portfolio<span class="muted-links">[<a href="https://github.com/omtiwari17/my-portfolio" target="_blank">GitHub</a>]</span></li>
+        <li>Patient Depict System <span class="muted-links">[<a href="https://github.com/omtiwari17/Patient-Depict-System" target="_blank">GitHub</a>]</span></li>
+        <li>Find My Book <span class="muted-links">[<a href="https://github.com/omtiwari17/Find_My_Book" target="_blank">GitHub</a>]</span></li>
+        <li>Smart Traffic – Automated E-Challan Generator <span class="muted-links">[<a href="https://github.com/omtiwari17/Smart_Traffic_System" target="_blank">GitHub</a>]</span></li>
+        <li>Banking System <span class="muted-links">[<a href="https://github.com/omtiwari17/BANKING_SYSTEM" target="_blank">GitHub</a>]</span></li>
+        <li>Personal Portfolio <span class="muted-links">[<a href="https://github.com/omtiwari17/my-portfolio" target="_blank">GitHub</a>]</span></li>
       </ul>
     </section>
+
+    <!-- FULL-WIDTH ROW: Certifications -->
+    <section class="resume-certs">
+      <h2>Certifications</h2>
+      <div class="certs-row">
+        <div class="card hover glow tilt cert-card">
+          <div class="cert-header">
+            <div class="cert-logos">
+              <span class="cert-org-badge nasscom">nasscom</span>
+              <span class="cert-org-badge ibm">IBM</span>
+            </div>
+            <span class="pill">Datagami · 80 hrs</span>
+          </div>
+          <h3>Agentic AI</h3>
+          <p class="muted" style="font-size:.85rem; margin:.1rem 0 .5rem;">Jan 27, 2026 – Feb 27, 2026 &nbsp;·&nbsp; <span class="accent-link">EDU-2026-TBNYN</span></p>
+          <p style="font-size:.88rem; color:var(--muted);">80-hour skill-based project in Agentic AI — practical training in autonomous agent design, LLM orchestration, and multi-agent systems.</p>
+          <div style="margin-top:.75rem;">
+            <a class="btn small outline" href="assets/certificates/Agentic_AI_certificate-EDU-2026-TBNYN.pdf" target="_blank" rel="noopener">📄 View Certificate</a>
+          </div>
+        </div>
+
+        <div class="card hover glow tilt cert-card">
+          <div class="cert-header">
+            <div class="cert-logos">
+              <span class="cert-org-badge nasscom">nasscom</span>
+              <span class="cert-org-badge ibm">IBM</span>
+            </div>
+            <span class="pill">Datagami · 80 hrs</span>
+          </div>
+          <h3>DevOps Foundation</h3>
+          <p class="muted" style="font-size:.85rem; margin:.1rem 0 .5rem;">Feb 28, 2026 – Mar 30, 2026 &nbsp;·&nbsp; <span class="accent-link">EDU-2026-VF5US</span></p>
+          <p style="font-size:.88rem; color:var(--muted);">80-hour skill-based project in DevOps Foundation — CI/CD pipelines, containerisation, infrastructure automation, and cloud deployment.</p>
+          <div style="margin-top:.75rem;">
+            <a class="btn small outline" href="assets/certificates/DevOps_certificate-EDU-2026-VF5US.pdf" target="_blank" rel="noopener">📄 View Certificate</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 </section>
 
