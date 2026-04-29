@@ -64,7 +64,7 @@ const io = new IntersectionObserver((entries) => {
 
 $$('.reveal, .reveal-up, .reveal-down').forEach(el => io.observe(el));
 
-// Tilt effect removed
+// Tilt effect removed.
 
 // ===== RIPPLE =====
 $$('.btn').forEach(btn => {

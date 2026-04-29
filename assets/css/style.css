@@ -498,9 +498,20 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== BULLETS ===== */
-.bullets { padding-left: 1.2rem; }
+.bullets { padding-left: 1.5rem; }
 .bullets li { margin: .28rem 0; font-size: .92rem; color: var(--muted); }
 .bullets li::marker { color: var(--accent); }
+
+.card ul {
+  padding-left: 1.5rem;
+  margin: .4rem 0;
+}
+
+.card ul li {
+  margin: .28rem 0;
+  font-size: .92rem;
+  color: var(--muted);
+}
 
 .bullets.two-col {
   display: grid;
