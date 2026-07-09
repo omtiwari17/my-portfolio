@@ -12,6 +12,18 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <script defer src="assets/js/main.js"></script>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    /* Show all three cert cards in one row instead of 2-per-row with a lone third */
+    .certs-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 900px) {
+      .certs-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .certs-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body class="theme-auto">
   <canvas id="bgParticles" aria-hidden="true"></canvas>
@@ -127,6 +139,22 @@
           <p style="font-size:.88rem; color:var(--muted);">80-hour skill-based project in DevOps Foundation — CI/CD pipelines, containerisation, infrastructure automation, and cloud deployment.</p>
           <div style="margin-top:.75rem;">
             <a class="btn small outline" href="https://drive.google.com/file/d/1YSG1NZkOxdCIYHRAJteghK8ok4z_el87/view?usp=drive_link" target="_blank" rel="noopener">📄 View Certificate</a>
+          </div>
+        </div>
+
+        <div class="card hover glow tilt cert-card">
+          <div class="cert-header">
+            <div class="cert-logos">
+              <span class="cert-org-badge nasscom">nasscom</span>
+              <span class="cert-org-badge ibm">IBM</span>
+            </div>
+            <span class="pill">Datagami · 80 hrs</span>
+          </div>
+          <h3>Generative AI</h3>
+          <p class="muted" style="font-size:.85rem; margin:.1rem 0 .5rem;">Apr 1, 2026 – May 1, 2026 &nbsp;·&nbsp; <span class="accent-link">EDU-2026-MDGWG</span></p>
+          <p style="font-size:.88rem; color:var(--muted);">80-hour skill-based project in Generative AI — structured training in foundation models, prompt design, and generative model applications.</p>
+          <div style="margin-top:.75rem;">
+            <a class="btn small outline" href="https://drive.google.com/file/d/1NWmMbDUPWa6SZgWgfcSQrnFDcJZJ6stM/view?usp=sharing" target="_blank" rel="noopener">📄 View Certificate</a>
           </div>
         </div>
       </div>
