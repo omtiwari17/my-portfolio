@@ -150,17 +150,34 @@ copyBtn?.addEventListener('click', () => {
 
 // ===== KEYBOARD SHORTCUTS =====
 document.addEventListener('keydown', (e) => {
-  if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-    if (e.key === 'Escape') document.activeElement.blur();
+  const activeTag = document.activeElement ? document.activeElement.tagName : '';
+  const isInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeTag);
+
+  if (e.key === 'Escape') {
+    if (isInput) {
+      const currentInput = document.activeElement;
+      if (currentInput.id === 'projectSearch') {
+        currentInput.value = '';
+        currentInput.dispatchEvent(new Event('input'));
+      }
+      currentInput.blur();
+    } else {
+      nav?.classList.remove('open');
+    }
     return;
   }
+
+  if (isInput) return;
+
   if (e.key.toLowerCase() === 't') {
     themeToggle?.click();
-  } else if (e.key === '/' && searchInput) {
-    e.preventDefault();
-    searchInput.focus();
-  } else if (e.key === 'Escape') {
-    nav?.classList.remove('open');
+  } else if (e.key === '/') {
+    const sInput = $('#projectSearch');
+    if (sInput) {
+      e.preventDefault();
+      sInput.focus();
+      sInput.select();
+    }
   }
 });
 
