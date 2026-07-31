@@ -83,9 +83,33 @@ $$('.btn').forEach(btn => {
   });
 });
 
-// ===== PROJECT FILTERING =====
+// ===== PROJECT SEARCH & FILTER =====
+const searchInput = $('#projectSearch');
+const projectCountEl = $('#projectCount');
 const filterButtons = $$('[data-filter]');
 const projects = $$('.project');
+
+function filterProjects() {
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+  const activeBtn = $('.filters .btn.active');
+  const tag = activeBtn ? activeBtn.dataset.filter : 'all';
+
+  let visibleCount = 0;
+  projects.forEach(p => {
+    const tags = (p.dataset.tags || '').toLowerCase();
+    const text = p.textContent.toLowerCase();
+    const showTag = tag === 'all' || tags.includes(tag);
+    const showQuery = !query || text.includes(query);
+
+    const show = showTag && showQuery;
+    p.style.display = show ? '' : 'none';
+    if (show) visibleCount++;
+  });
+
+  if (projectCountEl) {
+    projectCountEl.textContent = `Showing ${visibleCount} of ${projects.length} Projects`;
+  }
+}
 
 filterButtons.forEach(btn => btn.addEventListener('click', () => {
   filterButtons.forEach(b => {
@@ -94,25 +118,51 @@ filterButtons.forEach(btn => btn.addEventListener('click', () => {
   });
   btn.classList.add('active');
   btn.classList.remove('outline');
-
-  const tag = btn.dataset.filter;
-  projects.forEach(p => {
-    const show = tag === 'all' || (p.dataset.tags || '').includes(tag);
-    p.style.display = show ? '' : 'none';
-    if (show) {
-      // micro-animate back in
-      p.style.opacity = '0';
-      p.style.transform = 'translateY(10px)';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          p.style.transition = 'opacity .25s ease, transform .25s ease';
-          p.style.opacity = '1';
-          p.style.transform = 'none';
-        });
-      });
-    }
-  });
+  filterProjects();
 }));
+
+searchInput?.addEventListener('input', filterProjects);
+filterProjects();
+
+// ===== TOAST NOTIFICATION =====
+function showToast(msg) {
+  let toast = $('#toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'toast';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+// ===== COPY EMAIL =====
+const copyBtn = $('#copyEmailBtn');
+copyBtn?.addEventListener('click', () => {
+  navigator.clipboard.writeText('work.om.tiwari@gmail.com').then(() => {
+    showToast('📋 Email copied to clipboard!');
+  }).catch(() => {
+    showToast('✉️ work.om.tiwari@gmail.com');
+  });
+});
+
+// ===== KEYBOARD SHORTCUTS =====
+document.addEventListener('keydown', (e) => {
+  if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+    if (e.key === 'Escape') document.activeElement.blur();
+    return;
+  }
+  if (e.key.toLowerCase() === 't') {
+    themeToggle?.click();
+  } else if (e.key === '/' && searchInput) {
+    e.preventDefault();
+    searchInput.focus();
+  } else if (e.key === 'Escape') {
+    nav?.classList.remove('open');
+  }
+});
 
 // ===== CONTACT FORM (Formspree) =====
 const form = $('#contactForm');

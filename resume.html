@@ -67,8 +67,11 @@
 
 <section class="section reveal">
   <h1 class="gradient-text">Resume</h1>
-  <a class="btn ripple" href="https://drive.google.com/file/d/18owlzaFUBIx4SAxCxFJ_gebr63oCdaqJ/view?usp=sharing" download>⬇ Download Resume (PDF)</a>
-  <p class="muted">A quick overview of my experience and skills. Click the button above to download my resume in PDF format.</p>
+  <div class="resume-cta-bar" style="display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; margin-bottom: .8rem;">
+    <a class="btn ripple" href="https://drive.google.com/file/d/18owlzaFUBIx4SAxCxFJ_gebr63oCdaqJ/view?usp=sharing" download>⬇ Download Resume (PDF)</a>
+    <button class="btn outline ripple" onclick="window.print()" aria-label="Print resume">🖨️ Print Resume</button>
+  </div>
+  <p class="muted">A quick overview of my experience and skills. Download or print directly.</p>
   <div class="resume-grid">
 
     <!-- LEFT COLUMN: Experience → Education -->
