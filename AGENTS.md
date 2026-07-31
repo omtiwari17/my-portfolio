@@ -161,7 +161,10 @@ All enhancements are 100% static (HTML + CSS + JS) and fully compatible with Git
 
 | Feature | Details |
 |---|---|
-| **Tech Marquee** | Replaces static skills grid. 12 tech items duplicated for seamless CSS loop (`@keyframes marquee-scroll`). Pauses on hover. Uses emoji icons. |
+| **Live Status Indicator** | Glowing green status badge (`.live-status`, `.pulse-dot`) above hero headline (`Available for Software & AWS Roles`). |
+| **Subtle 3D Floating Animation** | `.hero-art` block animates with continuous, smooth `@keyframes float-subtle`. |
+| **MacOS IDE Window Header** | Hero JSON code block features authentic window controls (`.code-dot.red`, `.yellow`, `.green`) and `profile.py` title bar. |
+| **Card Spotlight & 3D Lift** | `mousemove` tracking on `.card` updates CSS variables (`--mouse-x`, `--mouse-y`). Cards lift smoothly on hover (`translateY(-5px)`) with cyan glow border. |
 | **Stat Counter** | `<strong data-count="7" data-suffix="+">0</strong>` on hero stats. Counts from 0 to target with cubic ease-out animation when scrolled into view. |
 | **Image Zoom** | `.card.hover:hover .project-img` applies `scale(1.04)` and `brightness(1.08)` |
 
@@ -231,10 +234,10 @@ Every page follows this exact structure inside `<body>`:
 ## Page Details
 
 ### `index.html` — Homepage
-- Hero section with gradient heading, bio, CTA buttons, social links, animated stat counter (`7+` counts up from 0)
-- Glass code block with typing animation (JSON profile)
-- **Auto-scrolling tech marquee** (Python, Django, AWS, Docker, Kubernetes, MySQL, C/C++, Git, CrewAI, GitHub Actions, Streamlit, SQL) — pauses on hover
-- Featured projects (3-column cards with image zoom on hover, lazy loaded images)
+- Hero section with live status badge (`.live-status`), gradient heading, bio, CTA buttons, social links, animated stat counter (`7+` counts up from 0)
+- Glass code block with MacOS window header (`profile.py`) and typing animation (JSON profile)
+- Skills section with 4 clean categorized glass cards (Languages, Cloud, Database, Tools)
+- Featured projects (3-column cards with 3D hover lift and image zoom, lazy loaded images)
 - Experience timeline (Software Engineer Trainee, AWS Trainee with Credly badge)
 - Footer with social icons
 
@@ -321,11 +324,11 @@ Every page follows this exact structure inside `<body>`:
 
 ---
 
-## Deployment
+## Deployment & Branching Policy
 
 - **Platform:** GitHub Pages (auto-deployed from the `main` branch)
 - **Custom Domain:** Configured via `CNAME` file → `omtiwari.tech`
-- **Development Branch:** `dev` — all changes go here first, then merged to `main` for deployment
+- **Development Branch:** `dev` — **ALL work and commits MUST be done on `dev` first.**
 - **No Build Step:** Push HTML/CSS/JS directly — GitHub Pages serves static files as-is
 - **Testing Locally:** Open any `.html` file directly in a browser, or use VS Code Live Server (port 5500). Note: custom 404 routing only works on GitHub Pages, not locally.
 
@@ -345,15 +348,15 @@ Every page follows this exact structure inside `<body>`:
 
 ## Important Notes for Agents
 
-1. **No build tools.** Do not introduce npm, webpack, vite, or any build system unless explicitly asked.
-2. **No frameworks.** Do not add React, Vue, Bootstrap, Tailwind, or jQuery unless explicitly asked.
-3. **Preserve existing comments and docstrings** unless the change specifically requires modifying them.
-4. **Test in both themes.** Any visual change must look correct in both dark mode (default) and light mode (`.light` class).
-5. **Maintain responsive design.** Test at desktop (1100px+), tablet (900px), and mobile (600px) breakpoints.
-6. **Keep page structure consistent.** All pages share the same header, nav, particle canvas, preloader, scroll progress, back-to-top, and footer structure.
-7. **Use design tokens.** Never hardcode colors, shadows, radii, or transition values — always reference CSS custom properties.
-8. **Images go in `assets/img/`.** Prefer lowercase filenames with hyphens for new assets.
-9. **Lazy load images.** All `<img>` tags must include `loading="lazy"`.
-10. **GitHub Pages only.** All features must be 100% static (HTML + CSS + JS). No server-side rendering, no APIs beyond Formspree.
-11. **Commit to `dev` branch.** Never push directly to `main`. Use `dev` for development, then merge to `main` for deployment.
+1. **ALWAYS commit to `dev` branch first.** Never commit or push directly to `main`. All agent development, bug fixes, visual improvements, and code changes MUST be committed on `dev` and pushed to `origin/dev`. Merging `dev` into `main` must only occur when explicitly confirmed by the user.
+2. **No build tools.** Do not introduce npm, webpack, vite, or any build system unless explicitly asked.
+3. **No frameworks.** Do not add React, Vue, Bootstrap, Tailwind, or jQuery unless explicitly asked.
+4. **Preserve existing comments and docstrings** unless the change specifically requires modifying them.
+5. **Test in both themes.** Any visual change must look correct in both dark mode (default) and light mode (`.light` class).
+6. **Maintain responsive design.** Test at desktop (1100px+), tablet (900px), and mobile (600px) breakpoints.
+7. **Keep page structure consistent.** All pages share the same header, nav, particle canvas, preloader, scroll progress, back-to-top, and footer structure.
+8. **Use design tokens.** Never hardcode colors, shadows, radii, or transition values — always reference CSS custom properties.
+9. **Images go in `assets/img/`.** Prefer lowercase filenames with hyphens for new assets.
+10. **Lazy load images.** All `<img>` tags must include `loading="lazy"`.
+11. **GitHub Pages only.** All features must be 100% static (HTML + CSS + JS). No server-side rendering, no APIs beyond Formspree.
 12. **Custom cursor is desktop-only.** Wrapped in `@media (pointer: fine)` — do not break this.
