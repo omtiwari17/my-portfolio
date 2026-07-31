@@ -520,29 +520,17 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== SKILLS ===== */
-.card.skill {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-  padding: 1.2rem 1.4rem;
-}
-
-.card.skill .skill-category-header {
+.card.skill header {
   display: flex;
   align-items: center;
   gap: .5rem;
   font-size: .95rem;
 }
 
-.card.skill .skill-category-header strong {
+.card.skill header strong {
   color: var(--accent);
   font-weight: 600;
-}
-
-.card.skill .skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem;
+  white-space: nowrap;
 }
 
 /* ===== TIMELINE ===== */
