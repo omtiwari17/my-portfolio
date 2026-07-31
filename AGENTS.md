@@ -329,6 +329,7 @@ Every page follows this exact structure inside `<body>`:
 - **Platform:** GitHub Pages (auto-deployed from the `main` branch)
 - **Custom Domain:** Configured via `CNAME` file → `omtiwari.tech`
 - **Development Branch:** `dev` — **ALL work and commits MUST be done on `dev` first.**
+- **STRICT MERGE POLICY:** **NEVER merge `dev` into `main` unless the user explicitly commands it.** Commands like "push", "push changes", or "push all commits" mean `git push origin dev` ONLY. Merging `dev` into `main` must NEVER happen automatically or without an explicit, direct user request to merge branches.
 - **No Build Step:** Push HTML/CSS/JS directly — GitHub Pages serves static files as-is
 - **Testing Locally:** Open any `.html` file directly in a browser, or use VS Code Live Server (port 5500). Note: custom 404 routing only works on GitHub Pages, not locally.
 
@@ -348,7 +349,7 @@ Every page follows this exact structure inside `<body>`:
 
 ## Important Notes for Agents
 
-1. **ALWAYS commit to `dev` branch first.** Never commit or push directly to `main`. All agent development, bug fixes, visual improvements, and code changes MUST be committed on `dev` and pushed to `origin/dev`. Merging `dev` into `main` must only occur when explicitly confirmed by the user.
+1. **ALWAYS commit to `dev` branch first & NEVER merge without explicit request.** All work, commits, and pushes MUST stay on `dev` / `origin/dev`. Never push directly to `main` and NEVER merge `dev` into `main` when asked to "push" or "commit". Merging `dev` into `main` is ONLY allowed if the user explicitly types a command requesting to merge `dev` into `main`.
 2. **No build tools.** Do not introduce npm, webpack, vite, or any build system unless explicitly asked.
 3. **No frameworks.** Do not add React, Vue, Bootstrap, Tailwind, or jQuery unless explicitly asked.
 4. **Preserve existing comments and docstrings** unless the change specifically requires modifying them.
