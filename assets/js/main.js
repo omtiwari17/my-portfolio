@@ -260,3 +260,111 @@ if (canvas) {
   }
   requestAnimationFrame(step);
 }
+
+// ===== PRELOADER =====
+window.addEventListener('load', () => {
+  const preloader = $('#preloader');
+  if (preloader) {
+    setTimeout(() => preloader.classList.add('loaded'), 350);
+    setTimeout(() => { preloader.style.display = 'none'; }, 1000);
+  }
+});
+
+// ===== SCROLL PROGRESS BAR =====
+const scrollProgress = $('#scrollProgress');
+if (scrollProgress) {
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    scrollProgress.style.width = progress + '%';
+  }, { passive: true });
+}
+
+// ===== BACK TO TOP =====
+const backToTop = $('#backToTop');
+if (backToTop) {
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// ===== ANIMATED STAT COUNTER =====
+const statNumbers = $$('[data-count]');
+if (statNumbers.length) {
+  const counterIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+
+        function tick(now) {
+          const elapsed = now - start;
+          const ratio = Math.min(elapsed / duration, 1);
+          // Ease-out cubic
+          const eased = 1 - Math.pow(1 - ratio, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (ratio < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterIo.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNumbers.forEach(el => counterIo.observe(el));
+}
+
+// ===== CUSTOM CURSOR =====
+if (window.matchMedia('(pointer: fine)').matches) {
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
+
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top = my + 'px';
+  });
+
+  function followCursor() {
+    rx += (mx - rx) * 0.15;
+    ry += (my - ry) * 0.15;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(followCursor);
+  }
+  requestAnimationFrame(followCursor);
+
+  const hoverTargets = 'a, button, input, textarea, .btn, .icon, .card, .nav a, .pill, [data-filter]';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(hoverTargets)) ring.classList.add('hover');
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(hoverTargets)) ring.classList.remove('hover');
+  });
+
+  // Hide cursor when mouse leaves viewport
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+}

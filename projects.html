@@ -17,6 +17,8 @@
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   </head>
   <body class="theme-auto">
+<div class="preloader" id="preloader"><div class="preloader-logo">OM</div></div>
+<div class="scroll-progress" id="scrollProgress"></div>
     <canvas id="bgParticles" aria-hidden="true"></canvas>
     <header class="site-header reveal-down">
       <a class="brand" href="index.html"
@@ -72,6 +74,7 @@
               class="project-img"
               src="assets/img/winpulse.png"
               alt="Live Cricket WinPulse preview"
+              loading="lazy"
             />
             <h3>Live Cricket WinPulse</h3>
             <p>
@@ -118,6 +121,7 @@
               class="project-img"
               src="assets/img/k8s-deploy.png"
               alt="Deploy Manufacturing App to Kubernetes preview"
+              loading="lazy"
             />
             <h3>Deploy Manufacturing App to Kubernetes</h3>
             <p>
@@ -152,6 +156,7 @@
               class="project-img"
               src="assets/img/multi-agent.png"
               alt="Multi-Agent Manufacturing System preview"
+              loading="lazy"
             />
             <h3>Multi-Agent Manufacturing System</h3>
             <p>
@@ -191,6 +196,7 @@
               class="project-img"
               src="assets/img/pds.png"
               alt="Patient Depict System preview"
+              loading="lazy"
             />
             <h3>Patient Depict System</h3>
             <p>
@@ -225,6 +231,7 @@
               class="project-img"
               src="assets/img/Find My Book.png"
               alt="OCR Book Finder preview"
+              loading="lazy"
             />
             <h3>Find My Book</h3>
             <p>
@@ -258,6 +265,7 @@
               class="project-img"
               src="assets/img/osts.png"
               alt="Automated E-Challan Generator preview"
+              loading="lazy"
             />
             <h3>Smart Traffic – Automated E-Challan Generator</h3>
             <p>
@@ -291,6 +299,7 @@
               class="project-img"
               src="assets/img/banking system.png"
               alt="Banking System preview"
+              loading="lazy"
             />
             <h3>Banking System</h3>
             <p>
@@ -316,7 +325,10 @@
         </div>
       </section>
     </main>
-    <footer class="site-footer reveal-up">
+        <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+<footer class="site-footer reveal-up">
       <p>© <span id="year"></span> Om Tiwari</p>
 
       <div class="footer-icons icons">

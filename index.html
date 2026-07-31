@@ -26,6 +26,8 @@
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   </head>
   <body class="theme-auto">
+    <div class="preloader" id="preloader"><div class="preloader-logo">OM</div></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <canvas id="bgParticles" aria-hidden="true"></canvas>
     <header class="site-header reveal-down">
       <a class="brand" href="index.html"
@@ -133,7 +135,7 @@
             </a>
           </div>
           <div class="stats">
-            <div class="tilt"><strong>7+</strong><span>Projects</span></div>
+            <div class="tilt"><strong data-count="7" data-suffix="+">0</strong><span>Projects</span></div>
             <div class="tilt"><strong>Open to</strong><span>Roles</span></div>
             <div class="tilt"><strong>AWS</strong><span>Certified</span></div>
           </div>
@@ -156,23 +158,33 @@ profile = {
 
       <section class="section reveal">
         <h2 class="section-title">Skills</h2>
-        <div class="grid skills-grid">
-          <div class="card skill hover glow tilt">
-            <header>
-              <strong>Languages: </strong><span>Python, C/C++, Django</span>
-            </header>
-          </div>
-          <div class="card skill hover glow tilt">
-            <header><strong>Cloud: </strong><span>AWS</span></header>
-          </div>
-          <div class="card skill hover glow tilt">
-            <header><strong>Database: </strong><span>SQL, MySQL</span></header>
-          </div>
-          <div class="card skill hover glow tilt">
-            <header>
-              <strong>Tools: </strong
-              ><span>Git/GitHub, Docker, Kubernetes</span>
-            </header>
+        <div class="marquee">
+          <div class="marquee-track">
+            <div class="marquee-item"><span class="marquee-icon">🐍</span> Python</div>
+            <div class="marquee-item"><span class="marquee-icon">🌐</span> Django</div>
+            <div class="marquee-item"><span class="marquee-icon">☁️</span> AWS</div>
+            <div class="marquee-item"><span class="marquee-icon">🐳</span> Docker</div>
+            <div class="marquee-item"><span class="marquee-icon">☸️</span> Kubernetes</div>
+            <div class="marquee-item"><span class="marquee-icon">🗄️</span> MySQL</div>
+            <div class="marquee-item"><span class="marquee-icon">⚡</span> C / C++</div>
+            <div class="marquee-item"><span class="marquee-icon">🔀</span> Git / GitHub</div>
+            <div class="marquee-item"><span class="marquee-icon">🤖</span> CrewAI</div>
+            <div class="marquee-item"><span class="marquee-icon">🔧</span> GitHub Actions</div>
+            <div class="marquee-item"><span class="marquee-icon">💎</span> Streamlit</div>
+            <div class="marquee-item"><span class="marquee-icon">📊</span> SQL</div>
+            <!-- Duplicate for seamless loop -->
+            <div class="marquee-item"><span class="marquee-icon">🐍</span> Python</div>
+            <div class="marquee-item"><span class="marquee-icon">🌐</span> Django</div>
+            <div class="marquee-item"><span class="marquee-icon">☁️</span> AWS</div>
+            <div class="marquee-item"><span class="marquee-icon">🐳</span> Docker</div>
+            <div class="marquee-item"><span class="marquee-icon">☸️</span> Kubernetes</div>
+            <div class="marquee-item"><span class="marquee-icon">🗄️</span> MySQL</div>
+            <div class="marquee-item"><span class="marquee-icon">⚡</span> C / C++</div>
+            <div class="marquee-item"><span class="marquee-icon">🔀</span> Git / GitHub</div>
+            <div class="marquee-item"><span class="marquee-icon">🤖</span> CrewAI</div>
+            <div class="marquee-item"><span class="marquee-icon">🔧</span> GitHub Actions</div>
+            <div class="marquee-item"><span class="marquee-icon">💎</span> Streamlit</div>
+            <div class="marquee-item"><span class="marquee-icon">📊</span> SQL</div>
           </div>
         </div>
       </section>
@@ -188,6 +200,7 @@ profile = {
               class="project-img"
               src="assets/img/winpulse.png"
               alt="Live Cricket WinPulse preview"
+              loading="lazy"
             />
             <h3>Live Cricket WinPulse</h3>
             <p>
@@ -206,6 +219,7 @@ profile = {
               class="project-img"
               src="assets/img/k8s-deploy.png"
               alt="Deploy Manufacturing App to Kubernetes preview"
+              loading="lazy"
             />
             <h3>Deploy Manufacturing App to Kubernetes</h3>
             <p>
@@ -224,6 +238,7 @@ profile = {
               class="project-img"
               src="assets/img/pds.png"
               alt="Patient Depict System preview"
+              loading="lazy"
             />
             <h3>Patient Depict System</h3>
             <p>
@@ -304,7 +319,7 @@ profile = {
                   </ul>
                 </div>
                 <div class="internship-badge">
-                  <img src="assets/img/AWS Badge.png" alt="AWS Badge" />
+                  <img src="assets/img/AWS Badge.png" alt="AWS Badge" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -312,6 +327,9 @@ profile = {
         </div>
       </section>
     </main>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
     <footer class="site-footer reveal-up">
       <p>© <span id="year"></span> Om Tiwari</p>
       <div class="footer-icons icons">
