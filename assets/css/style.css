@@ -45,7 +45,7 @@
 
   /* Typography */
   --font-body:   'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display:'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display:'Outfit', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ===== RESET ===== */
