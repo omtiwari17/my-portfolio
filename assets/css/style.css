@@ -1092,6 +1092,13 @@ body.light::before { opacity: .02; }
 }
 
 /* ===== TECH MARQUEE ===== */
+.skills-categories-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: .8rem;
+}
+
 .marquee {
   overflow: hidden;
   position: relative;
@@ -1134,6 +1141,18 @@ body.light::before { opacity: .02; }
 .marquee-icon {
   font-size: 1.15rem;
   line-height: 1;
+}
+
+.marquee-cat {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: .15rem .45rem;
+  border-radius: var(--radius-sm);
+  background: rgba(56,189,248,.12);
+  color: var(--accent);
+  margin-right: .15rem;
 }
 
 @keyframes marquee-scroll {
