@@ -88,7 +88,7 @@ All colors, shadows, radii, transitions, and typography are centralized as CSS C
 | Shadows | `--shadow-sm`, `--shadow`, `--shadow-lg`, `--shadow-glow` |
 | Radius | `--radius-sm` (8px), `--radius` (14px), `--radius-lg` (20px), `--radius-xl` (28px) |
 | Transitions | `--ease`, `--t-fast` (0.18s), `--t-mid` (0.32s) |
-| Typography | `--font-body` (`Inter` / `Plus Jakarta Sans`), `--font-display` (`Syne` / `Inter`) |
+| Typography | `--font-body` (`Inter`), `--font-display` (`Inter`) |
 
 ### Light Mode
 

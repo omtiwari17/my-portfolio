@@ -44,8 +44,8 @@
   --t-mid:       .32s ease;
 
   /* Typography */
-  --font-body:   'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-display:'Syne', 'Inter', system-ui, sans-serif;
+  --font-body:   'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display:'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ===== RESET ===== */
