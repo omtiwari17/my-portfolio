@@ -44,8 +44,8 @@
   --t-mid:       .32s ease;
 
   /* Typography */
-  --font-body:   'DM Sans', system-ui, sans-serif;
-  --font-display:'Playfair Display', Georgia, serif;
+  --font-body:   'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display:'Syne', 'Inter', system-ui, sans-serif;
 }
 
 /* ===== RESET ===== */
