@@ -666,6 +666,25 @@ body::before {
   border-color: rgba(56, 189, 248, 0.4);
 }
 
+/* ===== KBD KEYBOARD BADGE ===== */
+kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 0.1rem 0.38rem;
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: var(--text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+}
+
+.light kbd {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
 /* ===== SEARCH & FILTER CONTROLS ===== */
 .projects-controls {
   display: flex;
