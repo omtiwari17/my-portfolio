@@ -180,6 +180,14 @@ document.addEventListener('keydown', (e) => {
   else if (key === 'c' && !window.location.pathname.endsWith('contact.html')) { window.location.href = 'contact.html'; }
 });
 
+// Click handler for shortcut badge button (For non-tech users / touch devices)
+document.addEventListener('click', (e) => {
+  const badgeBtn = e.target.closest('.shortcut-badge-btn, #shortcutHelpBtn');
+  if (badgeBtn) {
+    showToast('⌨️ Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
+  }
+});
+
 // ===== FORMSPREE AJAX SUBMISSION =====
 const contactForm = $('#contactForm');
 const formStatus = $('#formStatus');

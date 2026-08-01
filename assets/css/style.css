@@ -685,6 +685,29 @@ kbd {
   color: #334155;
 }
 
+.shortcut-badge-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.82rem;
+  opacity: 0.85;
+  cursor: pointer;
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease;
+  margin-left: 0.35rem;
+}
+
+.shortcut-badge-btn:hover {
+  opacity: 1;
+  color: var(--accent);
+  background: rgba(56, 189, 248, 0.08);
+}
+
 /* ===== SEARCH & FILTER CONTROLS ===== */
 .projects-controls {
   display: flex;
