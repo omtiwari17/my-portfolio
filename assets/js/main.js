@@ -140,7 +140,26 @@ document.addEventListener('keydown', (e) => {
   // Do not trigger page/theme shortcuts while typing inside inputs
   if (isInput) return;
 
-  const key = e.key.toLowerCase();
+  const key = e.key ? e.key.toLowerCase() : '';
+
+  // ?: Keyboard Shortcut Help (Shift + / or ?)
+  if (e.key === '?' || (e.key === '/' && e.shiftKey) || (e.code === 'Slash' && e.shiftKey)) {
+    e.preventDefault();
+    showToast('⌨️ Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
+    return;
+  }
+
+  // /: Focus Search Input (without Shift)
+  if (e.key === '/' && !e.shiftKey) {
+    const searchEl = $('#projectSearch');
+    if (searchEl) {
+      e.preventDefault();
+      searchEl.focus();
+      searchEl.select();
+      showToast('🔍 Search focused (Press Esc to exit)');
+    }
+    return;
+  }
 
   // T: Toggle Theme
   if (key === 't') {
@@ -150,24 +169,11 @@ document.addEventListener('keydown', (e) => {
       const currentTheme = isLight() ? 'Light Mode' : 'Dark Mode';
       showToast(`🌓 Switched to ${currentTheme}`);
     }
+    return;
   }
-  // /: Focus Search Input
-  else if (e.key === '/') {
-    const searchEl = $('#projectSearch');
-    if (searchEl) {
-      e.preventDefault();
-      searchEl.focus();
-      searchEl.select();
-      showToast('🔍 Search focused (Press Esc to exit)');
-    }
-  }
-  // ?: Keyboard Shortcut Help
-  else if (e.key === '?') {
-    e.preventDefault();
-    showToast('⌨️ Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
-  }
+
   // Page Navigation Shortcuts
-  else if (key === 'h' && !window.location.pathname.endsWith('index.html')) { window.location.href = 'index.html'; }
+  if (key === 'h' && !window.location.pathname.endsWith('index.html')) { window.location.href = 'index.html'; }
   else if (key === 'a' && !window.location.pathname.endsWith('about.html')) { window.location.href = 'about.html'; }
   else if (key === 'p' && !window.location.pathname.endsWith('projects.html')) { window.location.href = 'projects.html'; }
   else if (key === 'r' && !window.location.pathname.endsWith('resume.html')) { window.location.href = 'resume.html'; }
