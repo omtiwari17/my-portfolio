@@ -115,14 +115,63 @@ filterButtons.forEach(btn => {
 
 searchInput?.addEventListener('input', filterProjects);
 
-// Keyboard shortcut '/' to search
-window.addEventListener('keydown', (e) => {
-  if (e.key === '/' && document.activeElement !== searchInput) {
-    if (searchInput) {
-      e.preventDefault();
-      searchInput.focus();
+// ===== GLOBAL KEYBOARD SHORTCUTS MANAGER =====
+document.addEventListener('keydown', (e) => {
+  const activeEl = document.activeElement;
+  const isInput = activeEl && ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeEl.tagName);
+
+  // ESCAPE Key (Works everywhere)
+  if (e.key === 'Escape') {
+    if (isInput) {
+      if (activeEl.id === 'projectSearch') {
+        activeEl.value = '';
+        filterProjects();
+      }
+      activeEl.blur();
+    } else {
+      const mobileNav = $('#nav');
+      if (mobileNav?.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+      }
+    }
+    return;
+  }
+
+  // Do not trigger page/theme shortcuts while typing inside inputs
+  if (isInput) return;
+
+  const key = e.key.toLowerCase();
+
+  // T: Toggle Theme
+  if (key === 't') {
+    const themeBtn = $('#themeToggle');
+    if (themeBtn) {
+      themeBtn.click();
+      const currentTheme = isLight() ? 'Light Mode' : 'Dark Mode';
+      showToast(`🌓 Switched to ${currentTheme}`);
     }
   }
+  // /: Focus Search Input
+  else if (e.key === '/') {
+    const searchEl = $('#projectSearch');
+    if (searchEl) {
+      e.preventDefault();
+      searchEl.focus();
+      searchEl.select();
+      showToast('🔍 Search focused (Press Esc to exit)');
+    }
+  }
+  // ?: Keyboard Shortcut Help
+  else if (e.key === '?') {
+    e.preventDefault();
+    showToast('⌨️ Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
+  }
+  // Page Navigation Shortcuts
+  else if (key === 'h' && !window.location.pathname.endsWith('index.html')) { window.location.href = 'index.html'; }
+  else if (key === 'a' && !window.location.pathname.endsWith('about.html')) { window.location.href = 'about.html'; }
+  else if (key === 'p' && !window.location.pathname.endsWith('projects.html')) { window.location.href = 'projects.html'; }
+  else if (key === 'r' && !window.location.pathname.endsWith('resume.html')) { window.location.href = 'resume.html'; }
+  else if (key === 'c' && !window.location.pathname.endsWith('contact.html')) { window.location.href = 'contact.html'; }
 });
 
 // ===== FORMSPREE AJAX SUBMISSION =====
