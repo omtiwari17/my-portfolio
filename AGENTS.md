@@ -85,8 +85,8 @@ All design tokens are centralized as CSS Custom Properties under `:root` (dark m
 | Text | `--text`, `--muted`, `--muted-2`, `--heading` | `#f8fafc`, `#94a3b8`, `#64748b`, `#ffffff` | `#334155`, `#64748b`, `#94a3b8`, `#0f172a` |
 | Accents | `--accent`, `--accent-hover`, `--accent-2`, `--purple`, `--emerald` | `#38bdf8`, `#7dd3fc`, `#818cf8`, `#c084fc`, `#34d399` | `#0284c7`, `#0369a1`, `#6366f1`, `#a855f7`, `#059669` |
 | Borders | `--border`, `--border-hover`, `--border-light` | `rgba(255,255,255,0.08)`, `rgba(56,189,248,0.4)`, `rgba(255,255,255,0.14)` | `#e2e8f0`, `rgba(2,132,199,0.4)`, `#cbd5e1` |
-| Gradients | `--grad-hero`, `--grad-text`, `--grad-glow` | Cyan → Indigo → Purple → Pink | Indigo → Blue → Dark Slate |
-| Typography | `--font-body`, `--font-display`, `--font-code` | `Inter`, `Outfit`, `JetBrains Mono` | Same |
+| Gradients | `--grad-hero`, `--grad-text`, `--grad-glow` | 4-stop Cyan → Indigo → Purple → Pink (`#0ea5e9` → `#6366f1` → `#a855f7` → `#f472b6`) | Same 4-stop Gradient |
+| Typography | `--font-body`, `--font-display`, `--font-code` | `Inter`, `Inter` (unified), `JetBrains Mono` | Same |
 
 ### Component Library (CSS Classes)
 
@@ -94,10 +94,11 @@ All design tokens are centralized as CSS Custom Properties under `:root` (dark m
 |---|---|
 | `.container` | Centered layout wrapper, `width: min(1140px, 92%)` |
 | `.site-header` | Sticky capsule navigation bar with `backdrop-filter: blur(20px)` |
+| `.brand`, `.logo` | Brand logo badge with 4-stop vibrant gradient (`#0ea5e9` → `#f472b6`), `12px` radius & `Shadows Into Light` cursive text |
 | `.nav`, `.nav a` | Capsule navigation menu with hover indicators & active page highlight |
 | `.btn`, `.btn.outline`, `.btn.small` | Button system with CSS ripple effect and hover elevation |
-| `.card`, `.card.hover`, `.card.glow` | Glassmorphism container cards with purple-cyan border glow |
-| `.pill` | Styled technology stack pills |
+| `.card`, `.card.hover`, `.card.glow` | Glassmorphism container cards with subtle mouse spotlight (`.card::before`) and border glow (`.glow::after`) |
+| `.pill` | Styled technology stack pills with neutral glass default and hover cyan accent |
 | `kbd` | Subtle keyboard shortcut badge |
 | `.live-status`, `.pulse-dot` | Glowing green availability pill above hero headline |
 | `.code-block`, `.code-block-header` | MacOS IDE window frame with window controls and typing code |
@@ -109,7 +110,7 @@ All design tokens are centralized as CSS Custom Properties under `:root` (dark m
 | `.gradient-text` | Animated multi-color gradient text shine sweep (`25s` duration) |
 | `.icons`, `.icon` | Social action buttons with hover lift |
 | `.site-footer` | Full-width anchored footer with social links & shortcut hint badge |
-| `.preloader`, `.preloader-logo` | Page load overlay with pulsing gradient logo |
+| `.preloader`, `.preloader-logo` | Page load overlay with pulsing 4-stop gradient logo matching header |
 | `.scroll-progress` | Fixed top gradient progress bar tracking window scroll percentage |
 | `.back-to-top` | Floating circular scroll-to-top button (appears after 350px scroll) |
 | `.cursor-dot`, `.cursor-ring` | Desktop custom cursor system (fine pointers only) |
