@@ -1088,16 +1088,16 @@ input::placeholder, textarea::placeholder {
   font-weight: 800;
   letter-spacing: -0.03em;
   background: linear-gradient(90deg, #ffffff 0%, #a5b4fc 25%, #38bdf8 50%, #c084fc 75%, #ffffff 100%);
-  background-size: 250% 100%;
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shine 10s linear infinite;
+  animation: shine 25s linear infinite;
 }
 
 @keyframes shine {
   0%   { background-position: 0%; }
-  100% { background-position: 250%; }
+  100% { background-position: 300%; }
 }
 
 /* ===== PRELOADER ===== */
