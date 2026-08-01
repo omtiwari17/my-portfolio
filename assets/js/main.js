@@ -137,8 +137,8 @@ document.addEventListener('keydown', (e) => {
     return;
   }
 
-  // Do not trigger page/theme shortcuts while typing inside inputs
-  if (isInput) return;
+  // Do not trigger page/theme shortcuts while typing inside inputs or using modifier keys (Ctrl/Cmd/Alt)
+  if (isInput || e.ctrlKey || e.metaKey || e.altKey) return;
 
   const key = e.key ? e.key.toLowerCase() : '';
 
