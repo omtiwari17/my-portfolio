@@ -1192,15 +1192,16 @@ input::placeholder, textarea::placeholder {
   font-size: 1.5rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  /* Start transparent to prevent FOUT; revealed by .font-ready once Google Font loads */
-  color: transparent;
-  transition: color 0.2s ease;
+  color: #fff;
+  /* Hidden until font loads — box and text appear together */
+  opacity: 0;
+  transition: opacity 0.25s ease;
   animation: preloader-pulse 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
   box-shadow: 0 4px 30px rgba(99, 102, 241, 0.5);
 }
 
 .preloader-logo.font-ready {
-  color: #fff;
+  opacity: 1;
 }
 
 @keyframes preloader-pulse {

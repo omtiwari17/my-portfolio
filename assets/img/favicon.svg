@@ -8,5 +8,5 @@
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="16" fill="url(#favGrad)" />
-  <text x="32" y="42" font-family="'Shadows Into Light', cursive, sans-serif" font-weight="700" font-size="28" fill="#ffffff" text-anchor="middle" letter-spacing="1">OM</text>
+  <text x="32" y="43" font-family="'Segoe Script', 'Comic Sans MS', 'Brush Script MT', cursive" font-weight="700" font-size="26" fill="#ffffff" text-anchor="middle" letter-spacing="1">OM</text>
 </svg>
