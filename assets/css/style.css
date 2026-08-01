@@ -1180,11 +1180,6 @@ input::placeholder, textarea::placeholder {
   pointer-events: none;
 }
 
-/* Hide header until preloader is dismissed to prevent duplicate "OM" logos on hard refresh */
-body:not(.preloader-done) .site-header {
-  visibility: hidden;
-}
-
 .preloader-logo {
   width: 64px;
   height: 64px;
@@ -1192,7 +1187,8 @@ body:not(.preloader-done) .site-header {
   background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 45%, #a855f7 80%, #f472b6 100%);
   display: grid;
   place-items: center;
-  font-family: 'Shadows Into Light', cursive, var(--font-display);
+  /* System font stack avoids FOUT flash (no Google Font swap needed for a 700ms preloader) */
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: 1px;
