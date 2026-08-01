@@ -36,24 +36,9 @@ themeToggle?.addEventListener('click', () => {
   const next = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
   localStorage.setItem('theme', next);
   applyTheme();
-  setParticleColors();
 });
 
 function isLight() { return document.body.classList.contains('light'); }
-
-let particleFill = 'rgba(56,189,248,0.55)';
-let particleLine = 'rgba(124,58,237,0.07)';
-
-function setParticleColors() {
-  if (isLight()) {
-    particleFill = 'rgba(2,132,199,0.45)';
-    particleLine = 'rgba(2,132,199,0.06)';
-  } else {
-    particleFill = 'rgba(56,189,248,0.55)';
-    particleLine = 'rgba(124,58,237,0.07)';
-  }
-}
-setParticleColors();
 
 // ===== MOBILE NAVIGATION TOGGLE =====
 const menuToggle = $('#menuToggle');
@@ -63,7 +48,7 @@ menuToggle?.addEventListener('click', () => nav?.classList.toggle('open'));
 // Close mobile nav when clicking a link
 $$('.nav a').forEach(a => a.addEventListener('click', () => nav?.classList.remove('open')));
 
-// ===== REVEAL ON SCROLL (Optimized threshold & rootMargin) =====
+// ===== REVEAL ON SCROLL =====
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -120,123 +105,133 @@ function filterProjects() {
   }
 }
 
-filterButtons.forEach(btn => btn.addEventListener('click', () => {
-  filterButtons.forEach(b => {
-    b.classList.remove('active');
-    b.classList.add('outline');
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterProjects();
   });
-  btn.classList.add('active');
-  btn.classList.remove('outline');
-  filterProjects();
-}));
+});
 
 searchInput?.addEventListener('input', filterProjects);
-if (projects.length > 0) filterProjects();
 
-// ===== TOAST NOTIFICATION SYSTEM =====
+// Keyboard shortcut '/' to search
+window.addEventListener('keydown', (e) => {
+  if (e.key === '/' && document.activeElement !== searchInput) {
+    if (searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  }
+});
+
+// ===== FORMSPREE AJAX SUBMISSION =====
+const contactForm = $('#contactForm');
+const formStatus = $('#formStatus');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      const data = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        if (formStatus) {
+          formStatus.style.color = '#34d399';
+          formStatus.textContent = '✓ Message sent successfully! I will reply soon.';
+        }
+        contactForm.reset();
+        showToast('Message sent successfully!');
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (err) {
+      if (formStatus) {
+        formStatus.style.color = '#f87171';
+        formStatus.textContent = '✕ Error sending message. Please try again.';
+      }
+      showToast('Failed to send message.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+}
+
+// ===== TOAST NOTIFICATION =====
 function showToast(msg) {
-  let toast = $('#toast');
+  let toast = $('#toastNotification');
   if (!toast) {
     toast = document.createElement('div');
-    toast.id = 'toast';
+    toast.id = 'toastNotification';
     toast.className = 'toast';
     document.body.appendChild(toast);
   }
-  toast.innerHTML = msg;
+  toast.textContent = msg;
   toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2800);
+  setTimeout(() => toast.classList.remove('show'), 3500);
 }
 
-// ===== COPY EMAIL TO CLIPBOARD =====
-const copyBtn = $('#copyEmailBtn');
-copyBtn?.addEventListener('click', () => {
-  navigator.clipboard.writeText('work.om.tiwari@gmail.com').then(() => {
-    showToast('📋 Email copied to clipboard!');
-  }).catch(() => {
-    showToast('✉️ work.om.tiwari@gmail.com');
-  });
-});
-
-// ===== KEYBOARD SHORTCUTS =====
-document.addEventListener('keydown', (e) => {
-  const activeTag = document.activeElement ? document.activeElement.tagName : '';
-  const isInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeTag);
-
-  if (e.key === 'Escape') {
-    if (isInput) {
-      const currentInput = document.activeElement;
-      if (currentInput.id === 'projectSearch') {
-        currentInput.value = '';
-        currentInput.dispatchEvent(new Event('input'));
-      }
-      currentInput.blur();
-    } else {
-      nav?.classList.remove('open');
-    }
-    return;
-  }
-
-  if (isInput) return;
-
-  if (e.key.toLowerCase() === 't') {
-    themeToggle?.click();
-  } else if (e.key === '/') {
-    const sInput = $('#projectSearch');
-    if (sInput) {
-      e.preventDefault();
-      sInput.focus();
-      sInput.select();
-    }
-  }
-});
-
-// ===== CONTACT FORM (Formspree AJAX) =====
-const form = $('#contactForm');
-const statusEl = $('#formStatus');
-
-form?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  if (statusEl) {
-    statusEl.textContent = 'Sending…';
-    statusEl.style.color = 'var(--muted)';
-  }
-
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+// ===== COPY EMAIL UTILITY =====
+const copyEmailBtn = $('#copyEmailBtn');
+if (copyEmailBtn) {
+  copyEmailBtn.addEventListener('click', () => {
+    const email = 'work.om.tiwari@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      showToast('Email address copied to clipboard!');
+    }).catch(() => {
+      showToast('Email: work.om.tiwari@gmail.com');
     });
+  });
+}
 
-    if (res.ok) {
-      if (statusEl) {
-        statusEl.textContent = '✅ Message sent! I\'ll get back to you soon.';
-        statusEl.style.color = '#34d399';
-      }
-      form.reset();
-    } else {
-      if (statusEl) {
-        statusEl.textContent = '❌ Something went wrong. Please try again.';
-        statusEl.style.color = '#f87171';
-      }
-    }
-  } catch {
-    if (statusEl) {
-      statusEl.textContent = '⚠️ Network error. Please try again.';
-      statusEl.style.color = '#fbbf24';
-    }
-  }
-});
+// ===== CARD SPOTLIGHT MOUSE TRACKING (rAF Throttled) =====
+const cards = $$('.card');
+let isTrackingSpotlight = false;
 
-// ===== TYPING ANIMATION (Hero IDE Window) =====
-const codeTarget = $('pre code');
+window.addEventListener('mousemove', (e) => {
+  if (isTrackingSpotlight) return;
+  isTrackingSpotlight = true;
+
+  requestAnimationFrame(() => {
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (
+        e.clientX >= rect.left - 100 &&
+        e.clientX <= rect.right + 100 &&
+        e.clientY >= rect.top - 100 &&
+        e.clientY <= rect.bottom + 100
+      ) {
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }
+    });
+    isTrackingSpotlight = false;
+  });
+}, { passive: true });
+
+// ===== TYPING ANIMATION (profile.py) =====
+const codeTarget = $('.code-block code');
 if (codeTarget) {
   const lines = [
-    { text: 'hello, world!', delay: 0 },
-    { text: 'profile = {', delay: 400 },
-    { text: '  name: "Om Tiwari",', delay: 700 },
-    { text: '  role: "CS Graduate",', delay: 1000 },
-    { text: '  stack: ["Python", "Django", "AWS"],', delay: 1300 },
+    { text: 'hello world!', delay: 200 },
+    { text: 'profile = {', delay: 700 },
+    { text: '  name: "Om Tiwari",', delay: 1000 },
+    { text: '  role: "CS Graduate",', delay: 1200 },
+    { text: '  stack: ["Python", "Django", "AWS"],', delay: 1400 },
     { text: '  status: "available for roles 🚀"', delay: 1600 },
     { text: '}', delay: 1900 },
   ];
@@ -281,11 +276,17 @@ if (codeTarget) {
   }
 }
 
-// ===== BACKGROUND PARTICLES =====
+// ===== MULTI-COLOR FLOATING PARTICLES & MOUSE CONNECTIONS =====
 const canvas = $('#bgParticles');
 if (canvas) {
   const ctx = canvas.getContext('2d');
   let width, height, particles;
+  let mouse = { x: -1000, y: -1000 };
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }, { passive: true });
 
   function resize() {
     width = canvas.width = window.innerWidth;
@@ -294,42 +295,80 @@ if (canvas) {
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  function initParticles(n = 60) {
-    particles = Array.from({ length: n }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() * 0.8 - 0.4),
-      vy: (Math.random() * 0.8 - 0.4),
-      r: Math.random() * 1.5 + 0.4,
-    }));
+  const colors = [
+    { r: 56,  g: 189, b: 248 }, // Cyan
+    { r: 129, g: 140, b: 248 }, // Indigo
+    { r: 192, g: 132, b: 252 }, // Violet
+    { r: 244, g: 114, b: 182 }  // Pink
+  ];
+
+  function initParticles(n = 75) {
+    particles = Array.from({ length: n }, () => {
+      const col = colors[Math.floor(Math.random() * colors.length)];
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() * 0.7 - 0.35),
+        vy: (Math.random() * 0.7 - 0.35),
+        r: Math.random() * 2 + 1,
+        color: col
+      };
+    });
   }
   initParticles();
 
-  const LINK_DIST = 90;
+  const LINK_DIST = 115;
   const LINK_DIST2 = LINK_DIST * LINK_DIST;
+  const MOUSE_DIST = 145;
+  const MOUSE_DIST2 = MOUSE_DIST * MOUSE_DIST;
 
   function step() {
     ctx.clearRect(0, 0, width, height);
+
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
+
       if (p.x < 0 || p.x > width)  p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
 
+      // Draw floating particle dot
+      const isLightMode = isLight();
+      const dotAlpha = isLightMode ? 0.65 : 0.8;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = particleFill;
+      ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${dotAlpha})`;
       ctx.fill();
 
+      // Connect particles to mouse cursor with glowing line
+      const mdx = p.x - mouse.x;
+      const mdy = p.y - mouse.y;
+      const md2 = mdx * mdx + mdy * mdy;
+      if (md2 < MOUSE_DIST2) {
+        const mAlpha = (1 - md2 / MOUSE_DIST2) * 0.45;
+        ctx.strokeStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${mAlpha})`;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+
+      // Connect to neighboring particles with color-mixed line
       for (let j = i + 1; j < particles.length; j++) {
         const q = particles[j];
-        const dx = p.x - q.x, dy = p.y - q.y;
+        const dx = p.x - q.x;
+        const dy = p.y - q.y;
         const d2 = dx * dx + dy * dy;
         if (d2 < LINK_DIST2) {
-          const alpha = 1 - d2 / LINK_DIST2;
-          ctx.strokeStyle = particleLine.replace('0.07', (0.07 * alpha).toFixed(3));
-          ctx.lineWidth = 1;
+          const alpha = (1 - d2 / LINK_DIST2) * (isLightMode ? 0.16 : 0.24);
+          const mr = Math.round((p.color.r + q.color.r) / 2);
+          const mg = Math.round((p.color.g + q.color.g) / 2);
+          const mb = Math.round((p.color.b + q.color.b) / 2);
+
+          ctx.strokeStyle = `rgba(${mr}, ${mg}, ${mb}, ${alpha})`;
+          ctx.lineWidth = 0.85;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(q.x, q.y);
@@ -342,136 +381,90 @@ if (canvas) {
   requestAnimationFrame(step);
 }
 
-// ===== PRELOADER =====
+// ===== PRELOADER & SCROLL PROGRESS & BACK TO TOP =====
 window.addEventListener('load', () => {
   const preloader = $('#preloader');
   if (preloader) {
-    setTimeout(() => preloader.classList.add('loaded'), 250);
-    setTimeout(() => { preloader.style.display = 'none'; }, 800);
+    setTimeout(() => preloader.classList.add('loaded'), 200);
+    setTimeout(() => { preloader.style.display = 'none'; }, 700);
   }
 });
 
-// ===== SCROLL PROGRESS BAR =====
 const scrollProgress = $('#scrollProgress');
-if (scrollProgress) {
-  window.addEventListener('scroll', () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-    scrollProgress.style.width = progress + '%';
-  }, { passive: true });
-}
-
-// ===== BACK TO TOP =====
 const backToTop = $('#backToTop');
-if (backToTop) {
-  window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 350);
-  }, { passive: true });
 
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const current = window.scrollY;
+  const pct = total > 0 ? (current / total) * 100 : 0;
+  if (scrollProgress) scrollProgress.style.width = `${pct}%`;
 
-// ===== ANIMATED STAT COUNTER =====
-const statNumbers = $$('[data-count]');
-if (statNumbers.length) {
-  const counterIo = new IntersectionObserver((entries) => {
+  if (backToTop) {
+    if (current > 350) backToTop.classList.add('visible');
+    else backToTop.classList.remove('visible');
+  }
+}, { passive: true });
+
+backToTop?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ===== STAT COUNTERS =====
+const counters = $$('[data-count]');
+if (counters.length) {
+  const countIo = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         const el = e.target;
         const target = parseInt(el.dataset.count, 10);
         const suffix = el.dataset.suffix || '';
+        let start = 0;
         const duration = 1200;
-        const start = performance.now();
+        const startTime = performance.now();
 
-        function tick(now) {
-          const elapsed = now - start;
-          const ratio = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - ratio, 3);
-          el.textContent = Math.round(eased * target) + suffix;
-          if (ratio < 1) requestAnimationFrame(tick);
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(ease * target);
+          el.textContent = `${current}${suffix}`;
+          if (progress < 1) requestAnimationFrame(update);
+          else el.textContent = `${target}${suffix}`;
         }
-        requestAnimationFrame(tick);
-        counterIo.unobserve(el);
+
+        requestAnimationFrame(update);
+        countIo.unobserve(el);
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.5 });
 
-  statNumbers.forEach(el => counterIo.observe(el));
+  counters.forEach(c => countIo.observe(c));
 }
 
 // ===== CUSTOM CURSOR =====
-if (window.matchMedia('(pointer: fine)').matches) {
-  const dot = document.createElement('div');
-  dot.className = 'cursor-dot';
-  const ring = document.createElement('div');
-  ring.className = 'cursor-ring';
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
+const dot = $('.cursor-dot');
+const ring = $('.cursor-ring');
 
-  let mx = -100, my = -100;
-  let rx = -100, ry = -100;
+if (dot && ring) {
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
 
-  document.addEventListener('mousemove', (e) => {
-    mx = e.clientX;
-    my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top = my + 'px';
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
   }, { passive: true });
 
-  function followCursor() {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(followCursor);
+  function renderRing() {
+    ringX += (mouseX - ringX) * 0.16;
+    ringY += (mouseY - ringY) * 0.16;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+    requestAnimationFrame(renderRing);
   }
-  requestAnimationFrame(followCursor);
+  requestAnimationFrame(renderRing);
 
-  const hoverTargets = 'a, button, input, textarea, .btn, .icon, .card, .nav a, .pill, [data-filter]';
-  document.addEventListener('mouseover', (e) => {
-    if (e.target.closest(hoverTargets)) ring.classList.add('hover');
-  }, { passive: true });
-
-  document.addEventListener('mouseout', (e) => {
-    if (e.target.closest(hoverTargets)) ring.classList.remove('hover');
-  }, { passive: true });
-
-  document.addEventListener('mouseleave', () => {
-    dot.style.opacity = '0';
-    ring.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    dot.style.opacity = '1';
-    ring.style.opacity = '1';
+  $$('a, button, input, textarea, .card, .btn, .icon, .pill').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
   });
 }
-
-// ===== DYNAMIC CARD SPOTLIGHT MOUSE TRACKING (rAF Throttled for 120 FPS Scroll) =====
-let cardRafPending = false;
-let activeCard = null;
-let cardMouseEvt = null;
-
-document.addEventListener('mousemove', (e) => {
-  const card = e.target.closest('.card');
-  if (!card) return;
-
-  activeCard = card;
-  cardMouseEvt = e;
-
-  if (!cardRafPending) {
-    cardRafPending = true;
-    requestAnimationFrame(() => {
-      if (activeCard && cardMouseEvt) {
-        const rect = activeCard.getBoundingClientRect();
-        const x = cardMouseEvt.clientX - rect.left;
-        const y = cardMouseEvt.clientY - rect.top;
-        activeCard.style.setProperty('--mouse-x', `${x}px`);
-        activeCard.style.setProperty('--mouse-y', `${y}px`);
-      }
-      cardRafPending = false;
-    });
-  }
-}, { passive: true });
