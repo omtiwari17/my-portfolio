@@ -240,9 +240,16 @@ This created a visible flash of two different "OM" renderings on the preloader s
 
 **Key Rule:** Never use Google Fonts (or any `font-display: swap` web font) on the `.preloader-logo`. The header `.brand .logo` can safely use `Shadows Into Light` because it renders after fonts have already loaded.
 
-### Favicon
+### Favicon & Image Assets
 
-The SVG favicon (`assets/img/favicon.svg`) uses the same system cursive font stack as the preloader for consistency, since SVG favicons cannot load external Google Fonts. The gradient and layout match the header brand logo.
+The site uses a full favicon suite (`favicon.svg`, `favicon.png`, `favicon.ico`, `apple-touch-icon-180.png`). The SVG favicon uses system cursive font fallbacks (`Segoe Script`, `Comic Sans MS`, `Brush Script MT`) for cross-browser rendering since external Google Fonts cannot be fetched inside SVG favicons. High-resolution brand assets (`logo-512.png`, `logo-1024.png`) are located in `assets/img/`.
+
+### Mobile Drawer Navigation & Hamburger Icon Enhancements
+
+1. **Preloader Asset:** `.preloader-logo` renders `assets/img/logo-512.png` with a pulsing glow animation.
+2. **Mobile Drawer Aesthetics:** The `.nav` drawer on mobile (`<=900px`) uses a solid `#0b0f19` card background, cyan border glow, rounded item pills (`12px`), and dynamic `.active` page link styling to prevent backdrop text bleed.
+3. **Hamburger Visibility:** `#menuToggle` explicitly enforces `color: var(--heading)` to ensure high contrast in both dark and light modes.
+4. **Keyboard Shortcut Badge:** `.shortcut-badge-btn` ("Press ? for shortcuts") is hidden on mobile screens (`max-width: 900px`) via `display: none !important;` to optimize footer space.
 
 ---
 
