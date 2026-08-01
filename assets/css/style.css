@@ -606,6 +606,22 @@ body::before {
   -webkit-backdrop-filter: blur(12px);
 }
 
+/* Interactive Mouse Spotlight Glow on Card Hover */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.16), rgba(124, 58, 237, 0.1) 45%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
 .card h3 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -613,20 +629,22 @@ body::before {
   color: var(--heading);
   margin: 0.3rem 0 0.6rem;
   letter-spacing: -0.01em;
+  position: relative;
+  z-index: 2;
 }
 
 .card.hover:hover {
   transform: translateY(-5px);
-  border-color: rgba(56, 189, 248, 0.38);
-  box-shadow: 0 14px 30px rgba(0,0,0,.35), 0 0 24px rgba(56,189,248,.12);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35), 0 0 25px rgba(56, 189, 248, 0.18);
 }
 
-/* Gradient Border Glow (Purple → Transparent → Cyan from main) */
+/* Gradient Border Mask Glow */
 .glow {
   position: relative;
 }
 
-.glow::before {
+.glow::after {
   content: '';
   position: absolute;
   inset: -1px;
@@ -639,10 +657,11 @@ body::before {
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
+  z-index: 2;
 }
 
-.glow:hover::before {
-  opacity: 0.45;
+.glow:hover::after {
+  opacity: 0.6;
 }
 
 /* ===== PILL TAGS ===== */
