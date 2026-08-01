@@ -1180,6 +1180,11 @@ input::placeholder, textarea::placeholder {
   pointer-events: none;
 }
 
+/* Hide header until preloader is dismissed to prevent duplicate "OM" logos on hard refresh */
+body:not(.preloader-done) .site-header {
+  visibility: hidden;
+}
+
 .preloader-logo {
   width: 64px;
   height: 64px;

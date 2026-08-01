@@ -463,7 +463,13 @@ window.addEventListener('load', () => {
   const preloader = $('#preloader');
   if (preloader) {
     setTimeout(() => preloader.classList.add('loaded'), 200);
-    setTimeout(() => { preloader.style.display = 'none'; }, 700);
+    setTimeout(() => {
+      preloader.style.display = 'none';
+      document.body.classList.add('preloader-done');
+    }, 700);
+  } else {
+    // No preloader element — immediately mark as done
+    document.body.classList.add('preloader-done');
   }
 });
 
