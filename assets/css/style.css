@@ -1438,23 +1438,27 @@ input::placeholder, textarea::placeholder {
 @media (max-width: 900px) {
   .container {
     width: 92%;
-    padding: 2rem 0 4rem;
+    padding: 1.75rem 0 3.5rem;
   }
 
   .site-header {
-    width: 95%;
-    padding: 0.6rem 1rem;
-    border-radius: var(--radius-lg);
+    width: 100%;
+    top: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    padding: 0.65rem 1.25rem;
   }
 
   .hero {
     grid-template-columns: 1fr;
-    gap: 2.25rem;
-    padding-top: 1.5rem;
+    gap: 2rem;
+    padding-top: 1.25rem;
   }
 
   .hero h1 {
-    font-size: clamp(1.9rem, 6vw, 2.75rem);
+    font-size: clamp(1.85rem, 6vw, 2.75rem);
   }
 
   .cards-3       { grid-template-columns: 1fr; }
@@ -1468,32 +1472,38 @@ input::placeholder, textarea::placeholder {
     padding: 1.25rem;
   }
 
+  .code-block {
+    min-height: 180px;
+  }
+
   .code-block pre {
     font-size: 0.78rem;
+    white-space: pre-wrap;
+    word-break: break-word;
     overflow-x: auto;
   }
 
   .nav {
     display: none;
     position: absolute;
-    right: 3%;
-    top: 60px;
-    background: rgba(11, 15, 25, 0.96);
+    left: 1rem;
+    right: 1rem;
+    top: 58px;
+    background: rgba(11, 15, 25, 0.98);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
     padding: 0.85rem;
     flex-direction: column;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-    min-width: 200px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
     z-index: 1000;
   }
 
   .nav.open { display: flex; }
 
   .nav a {
-    padding: 0.65rem 1rem;
+    padding: 0.7rem 1rem;
     width: 100%;
     font-size: 0.95rem;
     border-radius: var(--radius-sm);
@@ -1547,13 +1557,8 @@ input::placeholder, textarea::placeholder {
 /* Mobile Devices (<= 600px) */
 @media (max-width: 600px) {
   .container {
-    width: 94%;
-    padding: 1.5rem 0 3.5rem;
-  }
-
-  .site-header {
-    width: 98%;
-    padding: 0.5rem 0.85rem;
+    width: 93%;
+    padding: 1.25rem 0 3rem;
   }
 
   .brand {
@@ -1567,12 +1572,12 @@ input::placeholder, textarea::placeholder {
   }
 
   .hero h1 {
-    font-size: clamp(1.75rem, 7.5vw, 2.3rem);
+    font-size: clamp(1.65rem, 7.5vw, 2.25rem);
     margin-bottom: 0.85rem;
   }
 
   .hero p {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
     line-height: 1.65;
   }
 
@@ -1656,16 +1661,22 @@ input::placeholder, textarea::placeholder {
     width: 42px;
     height: 42px;
   }
+
+  /* Disable transform jumps on mobile reveal */
+  .reveal, .reveal-up, .reveal-down {
+    transform: none !important;
+    transition: opacity 0.4s ease;
+  }
 }
 
 /* Extra Small Phones (<= 400px) */
 @media (max-width: 400px) {
   .hero h1 {
-    font-size: 1.6rem;
+    font-size: 1.55rem;
   }
 
   .section-title {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   .stats {

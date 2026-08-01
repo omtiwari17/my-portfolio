@@ -283,17 +283,30 @@ if (canvas) {
   let width, height, particles;
   let mouse = { x: -1000, y: -1000 };
 
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  }, { passive: true });
+  const updateTouch = (e) => {
+    if (e.touches && e.touches[0]) {
+      mouse.x = e.touches[0].clientX;
+      mouse.y = e.touches[0].clientY;
+    }
+  };
+
+  const resetTouch = () => {
+    mouse.x = -1000;
+    mouse.y = -1000;
+  };
+
+  window.addEventListener('touchstart', updateTouch, { passive: true });
+  window.addEventListener('touchmove', updateTouch, { passive: true });
+  window.addEventListener('touchend', resetTouch, { passive: true });
+  window.addEventListener('touchcancel', resetTouch, { passive: true });
+  window.addEventListener('mouseleave', resetTouch, { passive: true });
 
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
+    initParticles();
   }
   window.addEventListener('resize', resize, { passive: true });
-  resize();
 
   const colors = [
     { r: 56,  g: 189, b: 248 }, // Cyan
@@ -302,7 +315,9 @@ if (canvas) {
     { r: 244, g: 114, b: 182 }  // Pink
   ];
 
-  function initParticles(n = 75) {
+  function initParticles() {
+    const isMobile = width < 600;
+    const n = isMobile ? 35 : 75;
     particles = Array.from({ length: n }, () => {
       const col = colors[Math.floor(Math.random() * colors.length)];
       return {
@@ -315,7 +330,7 @@ if (canvas) {
       };
     });
   }
-  initParticles();
+  resize();
 
   const LINK_DIST = 115;
   const LINK_DIST2 = LINK_DIST * LINK_DIST;
