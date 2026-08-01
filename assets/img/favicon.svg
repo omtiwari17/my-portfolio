@@ -1,15 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <defs>
-    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="headerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0ea5e9" />
-      <stop offset="45%" stop-color="#6366f1" />
-      <stop offset="80%" stop-color="#a855f7" />
-      <stop offset="100%" stop-color="#f472b6" />
+      <stop offset="100%" stop-color="#7c3aed" />
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#6366f1" flood-opacity="0.35" />
-    </filter>
   </defs>
-  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#logoGrad)" filter="url(#glow)" />
-  <text x="64" y="78" font-family="'Shadows Into Light', 'Outfit', 'Inter', system-ui, sans-serif" font-weight="700" font-size="60" fill="#ffffff" text-anchor="middle" letter-spacing="2">OM</text>
+  <rect width="128" height="128" rx="33" fill="url(#headerLogoGrad)" />
+  <text x="64" y="82" font-family="'Shadows Into Light', cursive, sans-serif" font-weight="700" font-size="64" fill="#ffffff" text-anchor="middle" letter-spacing="1">OM</text>
 </svg>
