@@ -1514,6 +1514,10 @@ input::placeholder, textarea::placeholder {
     padding: 0.65rem 1.25rem;
   }
 
+  .shortcut-badge-btn {
+    display: none !important;
+  }
+
   .hero {
     grid-template-columns: 1fr;
     gap: 2rem;
