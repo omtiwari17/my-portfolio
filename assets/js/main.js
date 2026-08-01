@@ -6,7 +6,18 @@ const $$ = (q, root = document) => Array.from(root.querySelectorAll(q));
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ===== THEME =====
+// ===== ACTIVE NAVIGATION LINK =====
+const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+$$('.nav a').forEach(link => {
+  const href = link.getAttribute('href');
+  if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+    link.style.color = 'var(--heading)';
+    link.style.background = 'rgba(255, 255, 255, 0.08)';
+    link.style.fontWeight = '600';
+  }
+});
+
+// ===== THEME TOGGLE & PERSISTENCE =====
 const themeToggle = $('#themeToggle');
 
 function applyTheme() {
@@ -35,8 +46,8 @@ let particleLine = 'rgba(124,58,237,0.07)';
 
 function setParticleColors() {
   if (isLight()) {
-    particleFill = 'rgba(0,119,204,0.45)';
-    particleLine = 'rgba(0,119,204,0.06)';
+    particleFill = 'rgba(2,132,199,0.45)';
+    particleLine = 'rgba(2,132,199,0.06)';
   } else {
     particleFill = 'rgba(56,189,248,0.55)';
     particleLine = 'rgba(124,58,237,0.07)';
@@ -44,13 +55,13 @@ function setParticleColors() {
 }
 setParticleColors();
 
-// ===== MOBILE NAV =====
+// ===== MOBILE NAVIGATION TOGGLE =====
 const menuToggle = $('#menuToggle');
 const nav = $('#nav');
-menuToggle?.addEventListener('click', () => nav.classList.toggle('open'));
+menuToggle?.addEventListener('click', () => nav?.classList.toggle('open'));
 
-// Close nav when a link is clicked
-$$('.nav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+// Close mobile nav when clicking a link
+$$('.nav a').forEach(a => a.addEventListener('click', () => nav?.classList.remove('open')));
 
 // ===== REVEAL ON SCROLL =====
 const io = new IntersectionObserver((entries) => {
@@ -64,9 +75,7 @@ const io = new IntersectionObserver((entries) => {
 
 $$('.reveal, .reveal-up, .reveal-down').forEach(el => io.observe(el));
 
-// Tilt effect removed.
-
-// ===== RIPPLE =====
+// ===== BUTTON RIPPLE EFFECT =====
 $$('.btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     const rect = btn.getBoundingClientRect();
@@ -122,9 +131,9 @@ filterButtons.forEach(btn => btn.addEventListener('click', () => {
 }));
 
 searchInput?.addEventListener('input', filterProjects);
-filterProjects();
+if (projects.length > 0) filterProjects();
 
-// ===== TOAST NOTIFICATION =====
+// ===== TOAST NOTIFICATION SYSTEM =====
 function showToast(msg) {
   let toast = $('#toast');
   if (!toast) {
@@ -138,7 +147,7 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove('show'), 2800);
 }
 
-// ===== COPY EMAIL =====
+// ===== COPY EMAIL TO CLIPBOARD =====
 const copyBtn = $('#copyEmailBtn');
 copyBtn?.addEventListener('click', () => {
   navigator.clipboard.writeText('work.om.tiwari@gmail.com').then(() => {
@@ -181,14 +190,16 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ===== CONTACT FORM (Formspree) =====
+// ===== CONTACT FORM (Formspree AJAX) =====
 const form = $('#contactForm');
 const statusEl = $('#formStatus');
 
 form?.addEventListener('submit', async (e) => {
   e.preventDefault();
-  statusEl.textContent = 'Sending…';
-  statusEl.style.color = '';
+  if (statusEl) {
+    statusEl.textContent = 'Sending…';
+    statusEl.style.color = 'var(--muted)';
+  }
 
   try {
     const res = await fetch(form.action, {
@@ -198,29 +209,35 @@ form?.addEventListener('submit', async (e) => {
     });
 
     if (res.ok) {
-      statusEl.textContent = '✅ Message sent! I\'ll get back to you soon.';
-      statusEl.style.color = '#4ade80';
+      if (statusEl) {
+        statusEl.textContent = '✅ Message sent! I\'ll get back to you soon.';
+        statusEl.style.color = '#34d399';
+      }
       form.reset();
     } else {
-      statusEl.textContent = '❌ Something went wrong. Please try again.';
-      statusEl.style.color = '#f87171';
+      if (statusEl) {
+        statusEl.textContent = '❌ Something went wrong. Please try again.';
+        statusEl.style.color = '#f87171';
+      }
     }
   } catch {
-    statusEl.textContent = '⚠️ Network error. Please try again.';
-    statusEl.style.color = '#fbbf24';
+    if (statusEl) {
+      statusEl.textContent = '⚠️ Network error. Please try again.';
+      statusEl.style.color = '#fbbf24';
+    }
   }
 });
 
-// ===== TYPING ANIMATION (hero code block) =====
+// ===== TYPING ANIMATION (Hero IDE Window) =====
 const codeTarget = $('pre code');
 if (codeTarget) {
   const lines = [
     { text: 'hello, world!', delay: 0 },
     { text: 'profile = {', delay: 400 },
     { text: '  name: "Om Tiwari",', delay: 700 },
-    { text: '  role: "CSE Student",', delay: 1000 },
+    { text: '  role: "CS Graduate",', delay: 1000 },
     { text: '  stack: ["Python", "Django", "AWS"],', delay: 1300 },
-    { text: '  open_to: "opportunities 🚀"', delay: 1600 },
+    { text: '  status: "available for roles 🚀"', delay: 1600 },
     { text: '}', delay: 1900 },
   ];
 
@@ -236,12 +253,10 @@ if (codeTarget) {
       let i = 0;
       function typeChar() {
         if (i < text.length) {
-          // Insert before cursor
           cursor.insertAdjacentText('beforebegin', text[i]);
           i++;
           setTimeout(typeChar, 30 + Math.random() * 20);
         } else {
-          // newline after each line except last
           if (index < lines.length - 1) {
             cursor.insertAdjacentText('beforebegin', '\n');
           }
@@ -249,10 +264,9 @@ if (codeTarget) {
         }
       }
       typeChar();
-    }, index === 0 ? delay + 600 : 0);
+    }, index === 0 ? delay + 500 : 0);
   }
 
-  // Only run if hero is visible
   const heroSection = $('.hero');
   if (heroSection) {
     const heroIo = new IntersectionObserver((entries) => {
@@ -375,7 +389,6 @@ if (statNumbers.length) {
         function tick(now) {
           const elapsed = now - start;
           const ratio = Math.min(elapsed / duration, 1);
-          // Ease-out cubic
           const eased = 1 - Math.pow(1 - ratio, 3);
           el.textContent = Math.round(eased * target) + suffix;
           if (ratio < 1) requestAnimationFrame(tick);
@@ -425,7 +438,6 @@ if (window.matchMedia('(pointer: fine)').matches) {
     if (e.target.closest(hoverTargets)) ring.classList.remove('hover');
   });
 
-  // Hide cursor when mouse leaves viewport
   document.addEventListener('mouseleave', () => {
     dot.style.opacity = '0';
     ring.style.opacity = '0';
@@ -436,13 +448,14 @@ if (window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
-// ===== CARD SPOTLIGHT EFFECT =====
-$$('.card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
+// ===== DYNAMIC CARD SPOTLIGHT MOUSE TRACKING =====
+document.addEventListener('mousemove', (e) => {
+  const card = e.target.closest('.card');
+  if (card) {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
-  });
+  }
 });

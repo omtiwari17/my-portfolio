@@ -5,25 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Projects by Om Tiwari — ML demos, OCR tools, and web apps."
+      content="Featured Software & Cloud Engineering Projects by Om Tiwari — Python, Django, AWS, Kubernetes, and AI Agents."
     />
-    <meta name="theme-color" content="#0ea5e9" />
-    <title>Projects · Portfolio</title>
+    <meta name="theme-color" content="#38bdf8" />
+    <title>Projects · Om Tiwari Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script defer src="assets/js/main.js"></script>
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   </head>
   <body class="theme-auto">
-<div class="preloader" id="preloader"><div class="preloader-logo">OM</div></div>
-<div class="scroll-progress" id="scrollProgress"></div>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader"><div class="preloader-logo">OM</div></div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Background Particle Canvas -->
     <canvas id="bgParticles" aria-hidden="true"></canvas>
+
+    <!-- Header Navigation -->
     <header class="site-header reveal-down">
-      <a class="brand" href="index.html"
-        ><span class="logo glow">OM</span> <strong>Om Tiwari</strong></a
-      >
+      <a class="brand" href="index.html">
+        <span class="logo glow">OM</span> <strong>Om Tiwari</strong>
+      </a>
       <nav class="nav" id="nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -40,39 +47,41 @@
           🌓
         </button>
         <button class="btn small" id="menuToggle" aria-label="Open menu">
-          ☰
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" />
+          </svg>
         </button>
       </div>
     </header>
+
+    <!-- Main Content -->
     <main class="container">
       <section class="section reveal">
-        <h1 class="gradient-text">Projects</h1>
-        
+        <h1 class="gradient-text">Featured Projects</h1>
+        <p class="muted" style="max-width: 60ch; margin-bottom: 1.5rem; font-size: 1.02rem;">
+          A curated collection of my software engineering work, cloud infrastructure pipelines, and AI system implementations.
+        </p>
+
+        <!-- Project Controls & Filters -->
         <div class="projects-controls">
           <div class="search-wrapper">
             <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="search" id="projectSearch" class="search-input" placeholder="Search projects by title, tech stack, or keyword... (Press /)" aria-label="Search projects" />
+            <input type="search" id="projectSearch" class="search-input" placeholder="Search projects by title, stack, or keyword... (Press /)" aria-label="Search projects" />
           </div>
           <div class="filters">
             <button class="btn small active ripple" data-filter="all">All</button>
-            <button class="btn small outline ripple" data-filter="python">
-              Python
-            </button>
-            <button class="btn small outline ripple" data-filter="web">
-              Web
-            </button>
+            <button class="btn small outline ripple" data-filter="python">Python</button>
+            <button class="btn small outline ripple" data-filter="web">Web</button>
             <button class="btn small outline ripple" data-filter="ai">AI</button>
-            <button class="btn small outline ripple" data-filter="devops">
-              DevOps
-            </button>
-            <button class="btn small outline ripple" data-filter="cloud">
-              Cloud
-            </button>
+            <button class="btn small outline ripple" data-filter="devops">DevOps</button>
+            <button class="btn small outline ripple" data-filter="cloud">Cloud</button>
           </div>
           <div class="project-count" id="projectCount">Showing 7 of 7 Projects</div>
         </div>
 
+        <!-- Project Grid -->
         <div class="grid cards-3 project-grid">
+          <!-- Project 1 -->
           <article
             class="card project hover glow tilt"
             data-tags="web python django cloud"
@@ -84,42 +93,41 @@
               alt="Live Cricket WinPulse preview"
               loading="lazy"
             />
-            <h3>Live Cricket WinPulse</h3>
+            <div class="project-header-row">
+              <h3>Live Cricket WinPulse</h3>
+              <span class="project-badge flagship">Flagship</span>
+            </div>
             <p>
-              Real-time cricket dashboard integrating a live sports API to
-              display scores and calculate dynamic, ball-by-ball win
-              probabilities using a custom WASP-inspired algorithm.
+              Real-time cricket dashboard integrating live sports API to display scores and calculate dynamic ball-by-ball win probabilities using WASP algorithms.
             </p>
             <ul class="bullets">
-              <li>
-                Displays live scores for IPL and India matches with auto-refresh
-              </li>
-              <li>
-                Calculates dynamic win probability based on live match
-                conditions
-              </li>
-              <li>Implements smart API polling and automatic key rotation</li>
+              <li>Displays live IPL & international match scores with auto-refresh</li>
+              <li>Calculates dynamic win probability based on live match conditions</li>
+              <li>Implements smart API polling with automatic key rotation</li>
               <li>Built with Django and Tailwind CSS, deployed on Render</li>
             </ul>
-            <div class="tags">
-              <span class="pill">Django</span><span class="pill">Python</span
-              ><span class="pill">API</span>
+            <div class="tags" style="margin-bottom: 1rem;">
+              <span class="pill">Django</span><span class="pill">Python</span><span class="pill">REST API</span><span class="pill">Tailwind</span>
             </div>
-            <a
-              class="btn small"
-              href="https://github.com/omtiwari17/live-cricket-winpulse"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub</a
-            >
-            <a
-              class="btn small outline"
-              href="https://live-cricket-winpulse.onrender.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Live Demo</a
-            >
+            <div style="display: flex; gap: 0.5rem;">
+              <a
+                class="btn small"
+                href="https://github.com/omtiwari17/live-cricket-winpulse"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+              <a
+                class="btn small outline"
+                href="https://live-cricket-winpulse.onrender.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Live Demo ↗</a
+              >
+            </div>
           </article>
+
+          <!-- Project 2 -->
           <article
             class="card project hover glow tilt"
             data-tags="devops cloud"
@@ -131,30 +139,34 @@
               alt="Deploy Manufacturing App to Kubernetes preview"
               loading="lazy"
             />
-            <h3>Deploy Manufacturing App to Kubernetes</h3>
+            <div class="project-header-row">
+              <h3>Deploy Manufacturing App to Kubernetes</h3>
+              <span class="project-badge devops">DevOps</span>
+            </div>
             <p>
-              Full DevOps pipeline deploying the Multi-Agent Manufacturing
-              System to AWS EKS with zero-downtime rolling updates.
+              Full DevOps automation pipeline containerizing and deploying a Multi-Agent system to AWS EKS with zero-downtime rolling updates.
             </p>
             <ul class="bullets">
-              <li>Dockerized app with GitHub-based build strategy</li>
-              <li>GitHub Actions CI/CD, deploys on every git push</li>
-              <li>Zero-downtime rolling updates on AWS EKS</li>
-              <li>AWS Load Balancer exposes app on public URL</li>
+              <li>Dockerized app with multi-stage build optimization</li>
+              <li>GitHub Actions CI/CD pipeline triggered on every git push</li>
+              <li>Zero-downtime rolling deployment strategies on AWS EKS</li>
+              <li>AWS Load Balancer provisioning for external ingress</li>
             </ul>
-            <div class="tags">
-              <span class="pill">Docker</span
-              ><span class="pill">Kubernetes</span
-              ><span class="pill">AWS EKS</span
-              ><span class="pill">GitHub Actions</span>
+            <div class="tags" style="margin-bottom: 1rem;">
+              <span class="pill">Docker</span><span class="pill">Kubernetes</span><span class="pill">AWS EKS</span><span class="pill">CI/CD</span>
             </div>
-            <a
-              class="btn small"
-              href="https://github.com/omtiwari17/Deploy-Manufacturing-App-to-Kubernetes"
-              >GitHub</a
-            >
+            <div>
+              <a
+                class="btn small"
+                href="https://github.com/omtiwari17/Deploy-Manufacturing-App-to-Kubernetes"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
           </article>
 
+          <!-- Project 3 -->
           <article
             class="card project hover glow tilt"
             data-tags="python ai"
@@ -166,35 +178,41 @@
               alt="Multi-Agent Manufacturing System preview"
               loading="lazy"
             />
-            <h3>Multi-Agent Manufacturing System</h3>
+            <div class="project-header-row">
+              <h3>Multi-Agent Manufacturing System</h3>
+              <span class="project-badge ai">AI Agents</span>
+            </div>
             <p>
-              Automates supplier sourcing and generates structured comparison
-              reports using collaborative AI agents.
+              Automates supplier sourcing and generates structured comparison reports using collaborative multi-agent AI workflows.
             </p>
             <ul class="bullets">
-              <li>Researcher Agent sources supplier data via LLM</li>
-              <li>Writer Agent synthesizes structured reports</li>
-              <li>Orchestrator manages agent hand-offs and state</li>
-              <li>Streamlit UI with runtime Gemini API key entry</li>
+              <li>Researcher Agent sources supplier metrics via LLMs</li>
+              <li>Writer Agent synthesizes structured comparison reports</li>
+              <li>Orchestrator manages multi-agent hand-offs and state</li>
+              <li>Interactive Streamlit interface with runtime API keys</li>
             </ul>
-            <div class="tags">
-              <span class="pill">Python</span><span class="pill">CrewAI</span
-              ><span class="pill">Streamlit</span
-              ><span class="pill">Gemini LLM</span>
+            <div class="tags" style="margin-bottom: 1rem;">
+              <span class="pill">Python</span><span class="pill">CrewAI</span><span class="pill">Streamlit</span><span class="pill">Gemini LLM</span>
             </div>
-            <a
-              class="btn small"
-              href="https://github.com/omtiwari17/Multi-agent-system"
-              >GitHub</a
-            >
-            <a
-              class="btn small outline"
-              href="https://om-tiwari-multi-agent-system.streamlit.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Live Demo</a
-            >
+            <div style="display: flex; gap: 0.5rem;">
+              <a
+                class="btn small"
+                href="https://github.com/omtiwari17/Multi-agent-system"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+              <a
+                class="btn small outline"
+                href="https://om-tiwari-multi-agent-system.streamlit.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Live Demo ↗</a
+              >
+            </div>
           </article>
+
+          <!-- Project 4 -->
           <article
             class="card project hover glow tilt"
             data-tags="python web"
@@ -206,30 +224,34 @@
               alt="Patient Depict System preview"
               loading="lazy"
             />
-            <h3>Patient Depict System</h3>
+            <div class="project-header-row">
+              <h3>Patient Depict System</h3>
+              <span class="project-badge flagship">Fullstack</span>
+            </div>
             <p>
-              Manage patient medical data with secure authentication and
-              privacy-safe status sharing.
+              Django web platform managing patient medical data with secure authentication and token-based status sharing.
             </p>
             <ul class="bullets">
-              <li>Built with Django and Python</li>
-              <li>Token-based, read-only public status links</li>
-              <li>Shows current status</li>
-              <li>Links are privacy-safe</li>
+              <li>Built with Django, Python, and relational database</li>
+              <li>Token-based, read-only public status sharing links</li>
+              <li>Role-based access control for medical staff and patients</li>
+              <li>Expiring, privacy-safe shareable links</li>
             </ul>
-
-            <div class="tags">
-              <span class="pill">Django</span><span class="pill">Python</span
-              ><span class="pill">SQLite</span>
+            <div class="tags" style="margin-bottom: 1rem;">
+              <span class="pill">Django</span><span class="pill">Python</span><span class="pill">SQLite</span><span class="pill">Auth</span>
             </div>
-            <a
-              class="btn small"
-              href="https://github.com/omtiwari17/Patient-Depict-System"
-              aria-disabled="true"
-              >GitHub</a
-            >
+            <div>
+              <a
+                class="btn small"
+                href="https://github.com/omtiwari17/Patient-Depict-System"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
           </article>
 
+          <!-- Project 5 -->
           <article
             class="card project hover glow tilt"
             data-tags="python"
@@ -241,29 +263,34 @@
               alt="OCR Book Finder preview"
               loading="lazy"
             />
-            <h3>Find My Book</h3>
+            <div class="project-header-row">
+              <h3>Find My Book (OCR)</h3>
+              <span class="project-badge devops">Tools</span>
+            </div>
             <p>
-              Search for book details by snapping a photo of the cover, with
-              text extraction and Open Library integration.
+              Desktop tool to look up detailed book information by capturing cover images using OCR text extraction and Open Library API.
             </p>
             <ul class="bullets">
-              <li>Built with Tkinter + Tesseract + Requests</li>
-              <li>Fuzzy matching for better recall</li>
-              <li>MySQL for caching</li>
-              <li>Uses Open Library API for book info</li>
+              <li>Tkinter desktop GUI with Tesseract OCR integration</li>
+              <li>Fuzzy string matching for enhanced title search recall</li>
+              <li>MySQL database caching for offline retrieval</li>
+              <li>Integrates with Open Library REST API</li>
             </ul>
-            <div class="tags">
-              <span class="pill">Python</span><span class="pill">OCR</span
-              ><span class="pill">API</span><span class="pill">DBMS</span>
+            <div class="tags" style="margin-bottom: 1rem;">
+              <span class="pill">Python</span><span class="pill">OCR</span><span class="pill">API</span><span class="pill">MySQL</span>
             </div>
-            <a
-              class="btn small"
-              href="https://github.com/omtiwari17/Find_My_Book"
-              aria-disabled="true"
-              >GitHub</a
-            >
+            <div>
+              <a
+                class="btn small"
+                href="https://github.com/omtiwari17/Find_My_Book"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
           </article>
 
+          <!-- Project 6 -->
           <article
             class="card project hover glow tilt"
             data-tags="web"
@@ -275,29 +302,34 @@
               alt="Automated E-Challan Generator preview"
               loading="lazy"
             />
-            <h3>Smart Traffic – Automated E-Challan Generator</h3>
+            <div class="project-header-row">
+              <h3>Smart Traffic System</h3>
+              <span class="project-badge flagship">Web</span>
+            </div>
             <p>
-              Detects traffic violations in real time, auto-generates
-              e-challans, and sends them securely via email for faster
-              enforcement.<code></code>
+              Traffic enforcement system detecting violations in real time and automatically generating e-challans sent via email.
             </p>
             <ul class="bullets">
-              <li>Built with java, servlets</li>
-              <li>Automated e-challan generation</li>
-              <li>Real-time violation detection</li>
-              <li>Database for record tracking</li>
+              <li>Java Servlets backend handling violation logic</li>
+              <li>Automated e-challan generation with PDF generation</li>
+              <li>Automated email distribution using JavaMail SMTP</li>
+              <li>Relational database storage for record tracking</li>
             </ul>
-            <div class="tags">
-              <span class="pill">Java</span><span class="pill">Servlets</span
-              ><span class="pill">SMTP</span><span class="pill">DBMS</span>
+            <div class="tags" style="margin-bottom: 1rem;">
+              <span class="pill">Java</span><span class="pill">Servlets</span><span class="pill">SMTP</span><span class="pill">DBMS</span>
             </div>
-            <a
-              class="btn small"
-              href="https://github.com/omtiwari17/Smart_Traffic_System"
-              >GitHub</a
-            >
+            <div>
+              <a
+                class="btn small"
+                href="https://github.com/omtiwari17/Smart_Traffic_System"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
           </article>
 
+          <!-- Project 7 -->
           <article
             class="card project hover glow tilt"
             data-tags="python"
@@ -309,36 +341,44 @@
               alt="Banking System preview"
               loading="lazy"
             />
-            <h3>Banking System</h3>
+            <div class="project-header-row">
+              <h3>Desktop Banking System</h3>
+              <span class="project-badge devops">Desktop</span>
+            </div>
             <p>
-              Desktop application for managing bank accounts with secure
-              transactions and easy account handling.
+              Desktop management application for executing bank account operations, secure transactions, and customer management.
             </p>
             <ul class="bullets">
-              <li>Built with Python + Tkinter</li>
-              <li>SQL database for account storage</li>
-              <li>Create, view, update, and close accounts</li>
-              <li>Secure deposit and withdrawal operations</li>
+              <li>Python GUI built with Tkinter widget suite</li>
+              <li>Relational database storage for financial records</li>
+              <li>Account opening, updating, closing, and statement generation</li>
+              <li>Transaction validation for deposits and withdrawals</li>
             </ul>
-            <div class="tags">
-              <span class="pill">Python</span><span class="pill">Tkinter</span
-              ><span class="pill">DBMS</span>
+            <div class="tags" style="margin-bottom: 1rem;">
+              <span class="pill">Python</span><span class="pill">Tkinter</span><span class="pill">SQL</span>
             </div>
-            <a
-              class="btn small"
-              href="https://github.com/omtiwari17/BANKING_SYSTEM"
-              >GitHub</a
-            >
+            <div>
+              <a
+                class="btn small"
+                href="https://github.com/omtiwari17/BANKING_SYSTEM"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
           </article>
         </div>
       </section>
     </main>
-        <button class="back-to-top" id="backToTop" aria-label="Back to top">
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
-<footer class="site-footer reveal-up">
-      <p>© <span id="year"></span> Om Tiwari</p>
 
+    <!-- Footer -->
+    <footer class="site-footer reveal-up">
+      <p>© <span id="year"></span> Om Tiwari · All rights reserved.</p>
       <div class="footer-icons icons">
         <a
           class="icon"
@@ -347,10 +387,8 @@
           rel="noopener"
           aria-label="GitHub"
         >
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-            <path
-              d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.76.08-.75.08-.75 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.32 3.52 1.01.11-.8.42-1.33.77-1.63-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.39 1.25-3.23-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.31 1.23a11.5 11.5 0 0 1 6.04 0c2.3-1.55 3.31-1.23 3.31-1.23.66 1.69.25 2.94.12 3.25.78.84 1.25 1.92 1.25 3.23 0 4.6-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5Z"
-            />
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.76.08-.75.08-.75 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.32 3.52 1.01.11-.8.42-1.33.77-1.63-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.39 1.25-3.23-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.31 1.23a11.5 11.5 0 0 1 6.04 0c2.3-1.55 3.31-1.23 3.31-1.23.66 1.69.25 2.94.12 3.25.78.84 1.25 1.92 1.25 3.23 0 4.6-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5Z" />
           </svg>
         </a>
         <a
@@ -360,10 +398,8 @@
           rel="noopener"
           aria-label="LinkedIn"
         >
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-            <path
-              d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.8-2.2 3.7-2.2C20.3 8 24 10.6 24 16v8h-4v-7c0-1.7-.03-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-4V8z"
-            />
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.8-2.2 3.7-2.2C20.3 8 24 10.6 24 16v8h-4v-7c0-1.7-.03-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-4V8z" />
           </svg>
         </a>
         <a
@@ -371,10 +407,8 @@
           href="mailto:work.om.tiwari@gmail.com?subject=Hello%20Om&body=Hi%20Om,%0D%0A%0D%0A"
           aria-label="Email"
         >
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-            <path
-              d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13 22 6.01V6H2zm0 12h20V8l-10 7L2 8v10z"
-            />
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13 22 6.01V6H2zm0 12h20V8l-10 7L2 8v10z" />
           </svg>
         </a>
       </div>
