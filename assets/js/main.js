@@ -196,7 +196,7 @@ if (copyEmailBtn) {
   });
 }
 
-// ===== CARD SPOTLIGHT MOUSE TRACKING (rAF Throttled) =====
+// ===== CARD SPOTLIGHT MOUSE TRACKING =====
 const cards = $$('.card');
 let isTrackingSpotlight = false;
 
@@ -418,7 +418,6 @@ if (counters.length) {
         const el = e.target;
         const target = parseInt(el.dataset.count, 10);
         const suffix = el.dataset.suffix || '';
-        let start = 0;
         const duration = 1200;
         const startTime = performance.now();
 
@@ -441,30 +440,55 @@ if (counters.length) {
   counters.forEach(c => countIo.observe(c));
 }
 
-// ===== CUSTOM CURSOR =====
-const dot = $('.cursor-dot');
-const ring = $('.cursor-ring');
+// ===== CUSTOM CURSOR (Dynamic Creation & Event Delegation) =====
+if (window.matchMedia('(pointer: fine)').matches) {
+  let dot = $('.cursor-dot');
+  let ring = $('.cursor-ring');
 
-if (dot && ring) {
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
+  if (!dot) {
+    dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    document.body.appendChild(dot);
+  }
+  if (!ring) {
+    ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    document.body.appendChild(ring);
+  }
+
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.left = `${mx}px`;
+    dot.style.top = `${my}px`;
   }, { passive: true });
 
-  function renderRing() {
-    ringX += (mouseX - ringX) * 0.16;
-    ringY += (mouseY - ringY) * 0.16;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    requestAnimationFrame(renderRing);
+  function followCursor() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.left = `${rx}px`;
+    ring.style.top = `${ry}px`;
+    requestAnimationFrame(followCursor);
   }
-  requestAnimationFrame(renderRing);
+  requestAnimationFrame(followCursor);
 
-  $$('a, button, input, textarea, .card, .btn, .icon, .pill').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  const hoverTargets = 'a, button, input, textarea, select, .btn, .icon, .card, .nav a, .pill, [data-filter]';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(hoverTargets)) ring.classList.add('hover');
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(hoverTargets)) ring.classList.remove('hover');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
   });
 }
