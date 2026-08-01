@@ -57,9 +57,9 @@
   --t-fast:       0.18s cubic-bezier(0.16, 1, 0.3, 1);
   --t-mid:        0.35s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Typography */
+  /* Typography (Unified Inter Font Family) */
   --font-body:    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-code:    'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
 
