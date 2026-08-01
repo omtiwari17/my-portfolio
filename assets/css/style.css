@@ -11,6 +11,7 @@
   --card:         #0d1424;
   --card-hover:   #121b2f;
   --card-glass:   rgba(13, 20, 36, 0.94);
+  --grad-card:    linear-gradient(135deg, rgba(56,189,248,.07), rgba(124,58,237,.04));
   
   /* Text & Hierarchy */
   --text:         #f8fafc;
@@ -592,31 +593,18 @@ body::before {
 .cards-3       { grid-template-columns: repeat(3, 1fr); }
 .skills-grid   { grid-template-columns: repeat(2, 1fr); }
 
-/* ===== CARDS (Multi-Color Gradient Spotlight) ===== */
+/* ===== CARDS (Multi-Color Gradient Spotlight + Gradient Overlay) ===== */
 .card {
   position: relative;
-  background: var(--card-glass);
+  background: var(--grad-card), var(--card-glass);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.35rem 1.45rem;
   box-shadow: var(--shadow-sm);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
   overflow: hidden;
-}
-
-/* Multi-Color Gradient Spotlight Glow on Card Hover */
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.16), rgba(168, 85, 247, 0.1) 45%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.card:hover::before {
-  opacity: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .card h3 {
@@ -630,32 +618,32 @@ body::before {
 
 .card.hover:hover {
   transform: translateY(-5px);
-  border-color: var(--border-hover);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.38);
+  box-shadow: 0 14px 30px rgba(0,0,0,.35), 0 0 24px rgba(56,189,248,.12);
 }
 
-/* Multi-Color Gradient Border Mask Glow */
+/* Gradient Border Glow (Purple → Transparent → Cyan from main) */
 .glow {
   position: relative;
 }
 
-.glow::after {
+.glow::before {
   content: '';
   position: absolute;
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.6) 0%, rgba(124, 58, 237, 0.5) 50%, rgba(244, 114, 182, 0.6) 100%);
+  background: linear-gradient(90deg, #7c3aed, transparent, #0ea5e9);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
 }
 
-.glow:hover::after {
-  opacity: 0.85;
+.glow:hover::before {
+  opacity: 0.45;
 }
 
 /* ===== PILL TAGS ===== */
