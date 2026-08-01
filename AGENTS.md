@@ -53,8 +53,8 @@ my-portfolio/
     ├── js/
     │   └── main.js          # Shared interactivity: multi-color canvas particles, theme toggle, mobile drawer nav, scroll reveal, project search/filter, typing animation, toast notifications, keyboard shortcuts, rAF card spotlight, custom cursor
     └── img/
-        ├── favicon.png      # PNG favicon
-        ├── favicon.svg      # SVG favicon (preferred)
+        ├── favicon.png      # PNG favicon (legacy)
+        ├── favicon.svg      # SVG favicon (preferred) — gradient rounded-square with "OM" in system cursive font
         ├── AWS Badge.png    # AWS Credly certification badge
         ├── Agentic Project.png
         ├── Agentic.png
@@ -110,7 +110,7 @@ All design tokens are centralized as CSS Custom Properties under `:root` (dark m
 | `.gradient-text` | Animated multi-color gradient text shine sweep (`25s` duration) |
 | `.icons`, `.icon` | Social action buttons with hover lift |
 | `.site-footer` | Full-width anchored footer with social links & shortcut hint badge |
-| `.preloader`, `.preloader-logo` | Page load overlay with pulsing 4-stop gradient logo matching header |
+| `.preloader`, `.preloader-logo` | Page load overlay with pulsing 4-stop gradient logo. Uses system cursive font stack (`Segoe Script`, `Apple Chancery`, `Comic Sans MS`) instead of Google Font `Shadows Into Light` to prevent FOUT (Flash of Unstyled Text) on hard refresh. The header `.brand .logo` continues to use `Shadows Into Light` since it renders after fonts have loaded. |
 | `.scroll-progress` | Fixed top gradient progress bar tracking window scroll percentage |
 | `.back-to-top` | Floating circular scroll-to-top button (appears after 350px scroll) |
 | `.cursor-dot`, `.cursor-ring` | Desktop custom cursor system (fine pointers only) |
@@ -226,6 +226,26 @@ Every HTML page inside `<body>` follows this exact standard template:
 
 ---
 
+## Known Issues & Fixes
+
+### Preloader Duplicate "OM" Logo (FOUT) — Fixed
+
+**Problem:** On mobile hard refresh (empty cache), the preloader displayed two "OM" logos in quick succession. The root cause was `font-display: swap` in the Google Fonts CSS (`Shadows Into Light`). The browser would:
+1. Render "OM" immediately in a fallback system font
+2. ~200-500ms later, swap to `Shadows Into Light` with different glyph metrics
+
+This created a visible flash of two different "OM" renderings on the preloader screen.
+
+**Solution:** Changed `.preloader-logo` font from `'Shadows Into Light'` (Google Font) to a system cursive font stack: `'Segoe Script', 'Apple Chancery', 'Comic Sans MS', cursive`. System fonts render instantly on first paint — no network fetch, no swap, no flash. The preloader only lives for ~700ms, so a web font is unnecessary.
+
+**Key Rule:** Never use Google Fonts (or any `font-display: swap` web font) on the `.preloader-logo`. The header `.brand .logo` can safely use `Shadows Into Light` because it renders after fonts have already loaded.
+
+### Favicon
+
+The SVG favicon (`assets/img/favicon.svg`) uses the same system cursive font stack as the preloader for consistency, since SVG favicons cannot load external Google Fonts. The gradient and layout match the header brand logo.
+
+---
+
 ## Important Rules for AI Agents
 
 1. **Commit to `dev` only & NEVER auto-merge into `main`.** Always push commits to `origin/dev`.
@@ -234,3 +254,4 @@ Every HTML page inside `<body>` follows this exact standard template:
 4. **Use design tokens.** Always reference CSS Custom Properties (`var(--bg)`, `var(--accent)`, `var(--border)`).
 5. **Dual theme compatibility.** All new UI elements must look pristine in both Dark Mode (`:root`) and Light Mode (`.light`).
 6. **Mobile-first performance.** Keep scroll event listeners passive (`{ passive: true }`), throttle mousemove tracking via `requestAnimationFrame`, and ensure touch targets have a minimum height of 44px on mobile devices.
+7. **Preloader must use system fonts only.** Never use Google Fonts or any `font-display: swap` web font on `.preloader-logo` — it causes FOUT (duplicate logo flash) on hard refresh. Use the system cursive stack: `'Segoe Script', 'Apple Chancery', 'Comic Sans MS', cursive`.
