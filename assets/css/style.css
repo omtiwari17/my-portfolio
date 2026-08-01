@@ -224,7 +224,8 @@ body::before {
   position: relative;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.active {
   color: var(--heading);
   background: rgba(255, 255, 255, 0.08);
 }
@@ -1555,31 +1556,44 @@ input::placeholder, textarea::placeholder {
     position: absolute;
     left: 1rem;
     right: 1rem;
-    top: 58px;
-    background: rgba(11, 15, 25, 0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    padding: 0.85rem;
+    top: 62px;
+    background: #0b0f19;
+    border: 1px solid var(--border-hover);
+    border-radius: 18px;
+    padding: 0.6rem;
     flex-direction: column;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    gap: 0.25rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(56, 189, 248, 0.15);
     z-index: 1000;
   }
 
   .nav.open { display: flex; }
 
   .nav a {
-    padding: 0.7rem 1rem;
+    padding: 0.75rem 1.1rem;
     width: 100%;
-    font-size: 0.95rem;
-    border-radius: var(--radius-sm);
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: var(--muted);
+    border-radius: 12px;
+    transition: background var(--t-fast), color var(--t-fast);
+  }
+
+  .nav a:hover {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+  }
+
+  .nav a.active {
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent);
+    font-weight: 600;
   }
 
   .light .nav {
     background: #ffffff;
-    border-color: #e2e8f0;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
+    border-color: rgba(2, 132, 199, 0.25);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18), 0 0 20px rgba(2, 132, 199, 0.1);
   }
 
   #menuToggle {

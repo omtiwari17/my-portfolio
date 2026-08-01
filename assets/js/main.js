@@ -11,9 +11,7 @@ const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 $$('.nav a').forEach(link => {
   const href = link.getAttribute('href');
   if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-    link.style.color = 'var(--heading)';
-    link.style.background = 'rgba(255, 255, 255, 0.08)';
-    link.style.fontWeight = '600';
+    link.classList.add('active');
   }
 });
 
