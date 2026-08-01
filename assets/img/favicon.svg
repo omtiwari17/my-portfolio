@@ -2,9 +2,11 @@
   <defs>
     <linearGradient id="headerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0ea5e9" />
-      <stop offset="100%" stop-color="#7c3aed" />
+      <stop offset="40%" stop-color="#6366f1" />
+      <stop offset="75%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#f472b6" />
     </linearGradient>
   </defs>
-  <rect width="128" height="128" rx="33" fill="url(#headerLogoGrad)" />
+  <rect width="128" height="128" rx="36" fill="url(#headerLogoGrad)" />
   <text x="64" y="82" font-family="'Shadows Into Light', cursive, sans-serif" font-weight="700" font-size="64" fill="#ffffff" text-anchor="middle" letter-spacing="1">OM</text>
 </svg>
