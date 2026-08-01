@@ -142,23 +142,22 @@ document.addEventListener('keydown', (e) => {
 
   const key = e.key ? e.key.toLowerCase() : '';
 
-  // ?: Keyboard Shortcut Help (Shift + / or ?)
-  if (e.key === '?' || (e.key === '/' && e.shiftKey) || (e.code === 'Slash' && e.shiftKey)) {
-    e.preventDefault();
-    showToast('⌨️ Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
-    return;
-  }
+  // Keyboard Shortcut Help (?, Shift+/, or / on pages without search input)
+  const isSlashOrQuestion = e.key === '?' || e.key === '/' || e.code === 'Slash';
+  const searchEl = $('#projectSearch');
 
-  // /: Focus Search Input (without Shift)
-  if (e.key === '/' && !e.shiftKey) {
-    const searchEl = $('#projectSearch');
-    if (searchEl) {
+  if (isSlashOrQuestion) {
+    if (e.key === '?' || e.shiftKey || !searchEl) {
+      e.preventDefault();
+      showToast('⌨️ Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
+      return;
+    } else if (searchEl && !e.shiftKey) {
       e.preventDefault();
       searchEl.focus();
       searchEl.select();
       showToast('🔍 Search focused (Press Esc to exit)');
+      return;
     }
-    return;
   }
 
   // T: Toggle Theme
