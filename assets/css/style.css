@@ -1184,17 +1184,10 @@ input::placeholder, textarea::placeholder {
   width: 64px;
   height: 64px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 45%, #a855f7 80%, #f472b6 100%);
-  display: grid;
-  place-items: center;
-  font-family: 'Segoe Script', 'Apple Chancery', 'Comic Sans MS', cursive;
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #fff;
+  background: url('../img/logo-512.png') no-repeat center / cover;
   animation: preloader-pulse 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
   box-shadow: 0 4px 30px rgba(99, 102, 241, 0.5);
+  font-size: 0; /* Hide text content inside preloader-logo div */
 }
 
 @keyframes preloader-pulse {
