@@ -1187,15 +1187,20 @@ input::placeholder, textarea::placeholder {
   background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 45%, #a855f7 80%, #f472b6 100%);
   display: grid;
   place-items: center;
-  /* System font stack avoids FOUT flash (no Google Font swap needed for a 700ms preloader) */
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Shadows Into Light', cursive, var(--font-display);
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #fff;
+  /* Start transparent to prevent FOUT; revealed by .font-ready once Google Font loads */
+  color: transparent;
+  transition: color 0.2s ease;
   animation: preloader-pulse 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
   box-shadow: 0 4px 30px rgba(99, 102, 241, 0.5);
+}
+
+.preloader-logo.font-ready {
+  color: #fff;
 }
 
 @keyframes preloader-pulse {
