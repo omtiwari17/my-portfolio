@@ -459,12 +459,6 @@ if (canvas) {
 }
 
 // ===== PRELOADER & SCROLL PROGRESS & BACK TO TOP =====
-// Reveal preloader "OM" text only after Google Font loads (prevents FOUT double-logo flash)
-const preloaderLogo = $('.preloader-logo');
-if (preloaderLogo) {
-  document.fonts.ready.then(() => preloaderLogo.classList.add('font-ready'));
-}
-
 window.addEventListener('load', () => {
   const preloader = $('#preloader');
   if (preloader) {
