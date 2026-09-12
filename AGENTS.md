@@ -1,4 +1,4 @@
-# AGENTS.md — Project Context for AI Agents
+# AGENTS.md - Project Context for AI Agents
 
 > This file provides complete context for AI coding agents working on this portfolio.
 > It documents architecture, conventions, file roles, design tokens, JavaScript modules, mobile responsiveness, keyboard shortcuts, and strict contribution/branching guidelines.
@@ -7,13 +7,13 @@
 
 ## Project Overview
 
-**Name:** Om Tiwari — Personal Portfolio Website  
+**Name:** Om Tiwari - Personal Portfolio Website  
 **Live URL:** [https://omtiwari.tech](https://omtiwari.tech)  
 **GitHub:** [https://github.com/omtiwari17/my-portfolio](https://github.com/omtiwari17/my-portfolio)  
 **Hosting:** GitHub Pages with custom domain (`CNAME`)  
 
 **Description:**  
-A multi-page static developer portfolio for Om Tiwari — a B.Tech CSE graduate specializing in Python, Django, AWS Cloud Architecture, DevOps Pipelines (Docker & Kubernetes), and Agentic AI. The site showcases flagship projects, professional experience, certifications, interactive search/filter gallery, downloadable resume, and AJAX contact form.
+A multi-page static developer portfolio for Om Tiwari, a B.Tech CSE graduate specializing in Python, Django, AWS Cloud Architecture, DevOps Pipelines (Docker & Kubernetes), and Agentic AI. The site showcases flagship projects, professional experience, certifications, interactive search/filter gallery, downloadable resume, and AJAX contact form.
 
 **Philosophy:** Built entirely from scratch using vanilla HTML5, CSS3, and ES6+ JavaScript. Zero frameworks, zero build tools, zero external dependencies. Designed for performance, mobile responsiveness, accessibility, and full creative control.
 
@@ -24,9 +24,9 @@ A multi-page static developer portfolio for Om Tiwari — a B.Tech CSE graduate 
 | Layer         | Technology                                              |
 |---------------|---------------------------------------------------------|
 | Structure     | Semantic HTML5 (`<header>`, `<main>`, `<section>`, `<footer>`, `<article>`) |
-| Styling       | Vanilla CSS3 — CSS Custom Properties, Grid, Flexbox, Glassmorphism, Keyframe Animations, Mobile-First Breakpoints |
-| Logic         | Vanilla ES6+ JavaScript — DOM Utilities, Canvas API, Event Delegation, Passive Listeners |
-| Fonts         | Google Fonts — `Inter`, `Outfit`, `JetBrains Mono`, `Shadows Into Light` |
+| Styling       | Vanilla CSS3 - CSS Custom Properties, Grid, Flexbox, Glassmorphism, Keyframe Animations, Mobile-First Breakpoints |
+| Logic         | Vanilla ES6+ JavaScript - DOM Utilities, Canvas API, Event Delegation, Passive Listeners |
+| Fonts         | Google Fonts - `Inter`, `Outfit`, `JetBrains Mono`, `Shadows Into Light` |
 | Icons         | Inline SVGs (zero external icon font CDNs)              |
 | Forms Backend | [Formspree](https://formspree.io/) (endpoint: `https://formspree.io/f/mkgwrrar`) |
 | Hosting       | GitHub Pages + Custom Domain (`omtiwari.tech`)           |
@@ -41,10 +41,10 @@ my-portfolio/
 ├── CNAME                    # Custom domain config: omtiwari.tech
 ├── README.md                # Project documentation (user-facing)
 ├── AGENTS.md                # AI agent context (this file)
-├── index.html               # Homepage — hero, live status, core competencies, featured projects, experience
-├── about.html               # About — bio, education timeline, 6 cert cards, core values
-├── projects.html            # Project gallery — 7 projects with real-time search & category filter tabs
-├── resume.html              # Interactive resume — 2-column digital resume + certs grid
+├── index.html               # Homepage - hero, live status, core competencies, featured projects, experience
+├── about.html               # About - bio, education timeline, 6 cert cards, core values
+├── projects.html            # Project gallery - 7 projects with real-time search & category filter tabs
+├── resume.html              # Interactive resume - 2-column digital resume + certs grid
 ├── contact.html             # Contact form (Formspree AJAX) + email copy box + social grid
 ├── 404.html                 # Custom 404 error page with animated floating astronaut & quick links
 └── assets/
@@ -54,7 +54,7 @@ my-portfolio/
     │   └── main.js          # Shared interactivity: multi-color canvas particles, theme toggle, mobile drawer nav, scroll reveal, project search/filter, typing animation, toast notifications, keyboard shortcuts, rAF card spotlight, custom cursor
     └── img/
         ├── favicon.png      # PNG favicon (legacy)
-        ├── favicon.svg      # SVG favicon (preferred) — gradient rounded-square with "OM" in system cursive font
+        ├── favicon.svg      # SVG favicon (preferred) - gradient rounded-square with "OM" in system cursive font
         ├── AWS Badge.png    # AWS Credly certification badge
         ├── Agentic Project.png
         ├── Agentic.png
@@ -185,7 +185,10 @@ Every HTML page inside `<body>` follows this exact standard template:
       <a href="contact.html">Contact</a>
     </nav>
     <div class="header-actions">
-      <button class="btn small outline" id="themeToggle" aria-label="Toggle theme">🌓</button>
+      <button class="btn small outline" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
       <button class="btn small" id="menuToggle" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></svg>
       </button>
@@ -218,7 +221,7 @@ Every HTML page inside `<body>` follows this exact standard template:
 
 - **Hosting Platform:** GitHub Pages (auto-deployed from `main` branch)
 - **Custom Domain:** `omtiwari.tech` (`CNAME` file)
-- **Development Branch:** `dev` — **ALL commits, experiments, and fixes MUST be performed on `dev` / `origin/dev`.**
+- **Development Branch:** `dev` - **ALL commits, experiments, and fixes MUST be performed on `dev` / `origin/dev`.**
 - **STRICT MERGE POLICY:**  
   - **NEVER merge `dev` into `main` unless the user explicitly requests a branch merge.**  
   - Commands like *"push"*, *"push changes"*, or *"push all commits"* mean `git push origin dev` ONLY.  
@@ -228,7 +231,7 @@ Every HTML page inside `<body>` follows this exact standard template:
 
 ## Known Issues & Fixes
 
-### Preloader Duplicate "OM" Logo (FOUT) — Fixed
+### Preloader Duplicate "OM" Logo (FOUT) - Fixed
 
 **Problem:** On mobile hard refresh (empty cache), the preloader displayed two "OM" logos in quick succession. The root cause was `font-display: swap` in the Google Fonts CSS (`Shadows Into Light`). The browser would:
 1. Render "OM" immediately in a fallback system font
@@ -236,7 +239,7 @@ Every HTML page inside `<body>` follows this exact standard template:
 
 This created a visible flash of two different "OM" renderings on the preloader screen.
 
-**Solution:** Changed `.preloader-logo` font from `'Shadows Into Light'` (Google Font) to a system cursive font stack: `'Segoe Script', 'Apple Chancery', 'Comic Sans MS', cursive`. System fonts render instantly on first paint — no network fetch, no swap, no flash. The preloader only lives for ~700ms, so a web font is unnecessary.
+**Solution:** Changed `.preloader-logo` font from `'Shadows Into Light'` (Google Font) to a system cursive font stack: `'Segoe Script', 'Apple Chancery', 'Comic Sans MS', cursive`. System fonts render instantly on first paint (no network fetch, no swap, no flash). The preloader only lives for ~700ms, so a web font is unnecessary.
 
 **Key Rule:** Never use Google Fonts (or any `font-display: swap` web font) on the `.preloader-logo`. The header `.brand .logo` can safely use `Shadows Into Light` because it renders after fonts have already loaded.
 
@@ -261,4 +264,4 @@ The site uses a full favicon suite (`favicon.svg`, `favicon.png`, `favicon.ico`,
 4. **Use design tokens.** Always reference CSS Custom Properties (`var(--bg)`, `var(--accent)`, `var(--border)`).
 5. **Dual theme compatibility.** All new UI elements must look pristine in both Dark Mode (`:root`) and Light Mode (`.light`).
 6. **Mobile-first performance.** Keep scroll event listeners passive (`{ passive: true }`), throttle mousemove tracking via `requestAnimationFrame`, and ensure touch targets have a minimum height of 44px on mobile devices.
-7. **Preloader must use system fonts only.** Never use Google Fonts or any `font-display: swap` web font on `.preloader-logo` — it causes FOUT (duplicate logo flash) on hard refresh. Use the system cursive stack: `'Segoe Script', 'Apple Chancery', 'Comic Sans MS', cursive`.
+7. **Preloader must use system fonts only.** Never use Google Fonts or any `font-display: swap` web font on `.preloader-logo` - it causes FOUT (duplicate logo flash) on hard refresh. Use the system cursive stack: `'Segoe Script', 'Apple Chancery', 'Comic Sans MS', cursive`.

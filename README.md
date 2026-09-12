@@ -14,7 +14,7 @@
 
 ## 📌 About
 
-Personal portfolio website built from scratch with **HTML5, CSS3, and vanilla JavaScript** — no frameworks, no templates. Designed to be fast, fully responsive, and visually clean across all screen sizes and devices.
+Personal portfolio website built from scratch with **HTML5, CSS3, and vanilla JavaScript** - no frameworks, no templates. Designed to be fast, fully responsive, and visually clean across all screen sizes and devices.
 
 ---
 
@@ -48,7 +48,7 @@ Personal portfolio website built from scratch with **HTML5, CSS3, and vanilla Ja
 # Clone the repo
 git clone https://github.com/omtiwari17/my-portfolio.git
 
-# Open locally — no build step needed
+# Open locally - no build step needed
 cd my-portfolio
 open index.html   # or just open in your browser
 ```
