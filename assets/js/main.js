@@ -147,13 +147,13 @@ document.addEventListener('keydown', (e) => {
   if (isSlashOrQuestion) {
     if (e.key === '?' || e.shiftKey || !searchEl) {
       e.preventDefault();
-      showToast('⌨️ Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
+      showToast('Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
       return;
     } else if (searchEl && !e.shiftKey) {
       e.preventDefault();
       searchEl.focus();
       searchEl.select();
-      showToast('🔍 Search focused (Press Esc to exit)');
+      showToast('Search focused (Press Esc to exit)');
       return;
     }
   }
@@ -164,7 +164,7 @@ document.addEventListener('keydown', (e) => {
     if (themeBtn) {
       themeBtn.click();
       const currentTheme = isLight() ? 'Light Mode' : 'Dark Mode';
-      showToast(`🌓 Switched to ${currentTheme}`);
+      showToast(`Switched to ${currentTheme}`);
     }
     return;
   }
@@ -181,7 +181,7 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('click', (e) => {
   const badgeBtn = e.target.closest('.shortcut-badge-btn, #shortcutHelpBtn');
   if (badgeBtn) {
-    showToast('⌨️ Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
+    showToast('Shortcuts: T (Theme), / (Search), Esc (Close), H/A/P/R/C (Pages)');
   }
 });
 
@@ -292,7 +292,7 @@ if (codeTarget) {
     { text: '  name: "Om Tiwari",', delay: 1000 },
     { text: '  role: "CS Graduate",', delay: 1200 },
     { text: '  stack: ["Python", "Django", "AWS"],', delay: 1400 },
-    { text: '  status: "available for roles 🚀"', delay: 1600 },
+    { text: '  status: "available for roles"', delay: 1600 },
     { text: '}', delay: 1900 },
   ];
 

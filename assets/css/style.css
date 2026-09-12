@@ -253,6 +253,36 @@ body::before {
   align-items: center;
 }
 
+#themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0;
+  border-radius: var(--radius-pill);
+}
+
+#themeToggle svg {
+  flex-shrink: 0;
+}
+
+#themeToggle .theme-icon-sun {
+  display: block;
+}
+
+#themeToggle .theme-icon-moon {
+  display: none;
+}
+
+body.light #themeToggle .theme-icon-sun {
+  display: none;
+}
+
+body.light #themeToggle .theme-icon-moon {
+  display: block;
+}
+
 /* ===== BUTTON SYSTEM ===== */
 .btn {
   background: var(--accent);
