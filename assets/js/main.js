@@ -247,11 +247,11 @@ function showToast(msg) {
 const copyEmailBtn = $('#copyEmailBtn');
 if (copyEmailBtn) {
   copyEmailBtn.addEventListener('click', () => {
-    const email = 'work.om.tiwari@gmail.com';
+    const email = 'hello@omtiwari.dev';
     navigator.clipboard.writeText(email).then(() => {
       showToast('Email address copied to clipboard!');
     }).catch(() => {
-      showToast('Email: work.om.tiwari@gmail.com');
+      showToast('Email: hello@omtiwari.dev');
     });
   });
 }

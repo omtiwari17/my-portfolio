@@ -74,7 +74,7 @@ my-portfolio/
 
 | Platform | Link |
 |---|---|
-| 📧 Email | [work.om.tiwari@gmail.com](mailto:work.om.tiwari@gmail.com) |
+| 📧 Email | [hello@omtiwari.dev](mailto:hello@omtiwari.dev) |
 | 💼 LinkedIn | [linkedin.com/in/tiwariom](https://www.linkedin.com/in/tiwariom/) |
 | 🐙 GitHub | [github.com/omtiwari17](https://github.com/omtiwari17) |
 
