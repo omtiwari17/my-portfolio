@@ -2,7 +2,7 @@
 
 # Om Tiwari - Portfolio Website
 
-**Final-year B.Tech CSE student · Agentic AI & DevOps enthusiast · Indore, India**
+**B.Tech CSE Graduate · Agentic AI & DevOps Enthusiast · Indore, India**
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-omtiwari17.github.io-4f46e5?style=for-the-badge)](https://omtiwari17.github.io/my-portfolio/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-tiwariom-0a66c2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/tiwariom/)
