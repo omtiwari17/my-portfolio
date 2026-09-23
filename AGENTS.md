@@ -49,6 +49,7 @@ my-portfolio/
 ├── 404.html                 # Custom 404 error page with animated floating astronaut & quick links
 ├── robots.txt               # Crawler directives and sitemap reference
 ├── sitemap.xml              # XML Sitemap listing canonical URLs for search engines
+├── llms.txt                 # Structured context for AI search engines (Perplexity, ChatGPT, Gemini)
 └── assets/
     ├── css/
     │   └── style.css        # Global design system: tokens, reset, components, layout grids, dark/light theme, animation keyframes, mobile media queries
