@@ -8,9 +8,9 @@
 ## Project Overview
 
 **Name:** Om Tiwari - Personal Portfolio Website  
-**Live URL:** [https://omtiwari.tech](https://omtiwari.tech)  
+**Live URL:** [https://omtiwari.dev](https://omtiwari.dev) *(CRITICAL: `omtiwari.dev` is the active, canonical domain. The old `.tech` domain `omtiwari.tech` is deprecated and must NEVER be used).*  
 **GitHub:** [https://github.com/omtiwari17/my-portfolio](https://github.com/omtiwari17/my-portfolio)  
-**Hosting:** GitHub Pages with custom domain (`CNAME`)  
+**Hosting:** GitHub Pages with custom domain (`CNAME`: `omtiwari.dev`)  
 
 **Description:**  
 A multi-page static developer portfolio for Om Tiwari, a B.Tech CSE graduate specializing in Python, Django, AWS Cloud Architecture, DevOps Pipelines (Docker & Kubernetes), and Agentic AI. The site showcases flagship projects, professional experience, certifications, interactive search/filter gallery, downloadable resume, and AJAX contact form.
@@ -29,7 +29,7 @@ A multi-page static developer portfolio for Om Tiwari, a B.Tech CSE graduate spe
 | Fonts         | Google Fonts - `Inter`, `Outfit`, `JetBrains Mono`, `Shadows Into Light` |
 | Icons         | Inline SVGs (zero external icon font CDNs)              |
 | Forms Backend | [Formspree](https://formspree.io/) (endpoint: `https://formspree.io/f/mkgwrrar`) |
-| Hosting       | GitHub Pages + Custom Domain (`omtiwari.tech`)           |
+| Hosting       | GitHub Pages + Custom Domain (`omtiwari.dev`)            |
 | Resume        | Hosted on Google Drive (linked via CTA buttons)          |
 
 ---
@@ -38,7 +38,7 @@ A multi-page static developer portfolio for Om Tiwari, a B.Tech CSE graduate spe
 
 ```
 my-portfolio/
-├── CNAME                    # Custom domain config: omtiwari.tech
+├── CNAME                    # Custom domain config: omtiwari.dev
 ├── README.md                # Project documentation (user-facing)
 ├── AGENTS.md                # AI agent context (this file)
 ├── index.html               # Homepage - hero, live status, core competencies, featured projects, experience
@@ -47,6 +47,7 @@ my-portfolio/
 ├── resume.html              # Interactive resume - 2-column digital resume + certs grid
 ├── contact.html             # Contact form (Formspree AJAX) + email copy box + social grid
 ├── 404.html                 # Custom 404 error page with animated floating astronaut & quick links
+├── robots.txt               # Crawler directives and sitemap reference
 ├── sitemap.xml              # XML Sitemap listing canonical URLs for search engines
 └── assets/
     ├── css/
@@ -221,7 +222,7 @@ Every HTML page inside `<body>` follows this exact standard template:
 ## Deployment & Branching Guidelines
 
 - **Hosting Platform:** GitHub Pages (auto-deployed from `main` branch)
-- **Custom Domain:** `omtiwari.tech` (`CNAME` file)
+- **Custom Domain:** `omtiwari.dev` (`CNAME` file) — **CRITICAL DOMAIN RULE:** The only valid live domain is `omtiwari.dev`. Do NOT use `omtiwari.tech` (old/legacy domain).
 - **Development Branch:** `dev` - **ALL commits, experiments, and fixes MUST be performed on `dev` / `origin/dev`.**
 - **STRICT MERGE POLICY:**  
   - **NEVER merge `dev` into `main` unless the user explicitly requests a branch merge.**  
@@ -266,3 +267,4 @@ The site uses a full favicon suite (`favicon.svg`, `favicon.png`, `favicon.ico`,
 5. **Dual theme compatibility.** All new UI elements must look pristine in both Dark Mode (`:root`) and Light Mode (`.light`).
 6. **Mobile-first performance.** Keep scroll event listeners passive (`{ passive: true }`), throttle mousemove tracking via `requestAnimationFrame`, and ensure touch targets have a minimum height of 44px on mobile devices.
 7. **Preloader must use system fonts only.** Never use Google Fonts or any `font-display: swap` web font on `.preloader-logo` - it causes FOUT (duplicate logo flash) on hard refresh. Use the system cursive stack: `'Segoe Script', 'Apple Chancery', 'Comic Sans MS', cursive`.
+8. **Canonical Domain is `omtiwari.dev` ONLY.** The official production domain is `https://omtiwari.dev`. The previous domain `omtiwari.tech` is obsolete and must NEVER be introduced or used anywhere across `CNAME`, `robots.txt`, `sitemap.xml`, HTML meta tags, canonical links, Open Graph tags, JSON-LD schemas, or documentation.
