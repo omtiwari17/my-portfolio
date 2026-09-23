@@ -47,6 +47,7 @@ my-portfolio/
 ├── resume.html              # Interactive resume - 2-column digital resume + certs grid
 ├── contact.html             # Contact form (Formspree AJAX) + email copy box + social grid
 ├── 404.html                 # Custom 404 error page with animated floating astronaut & quick links
+├── sitemap.xml              # XML Sitemap listing canonical URLs for search engines
 └── assets/
     ├── css/
     │   └── style.css        # Global design system: tokens, reset, components, layout grids, dark/light theme, animation keyframes, mobile media queries
