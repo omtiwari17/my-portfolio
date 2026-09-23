@@ -1,6 +1,6 @@
 # Om Tiwari
 
-> Official website and portfolio of Om Tiwari, a Software Engineer and Cloud Architect based in Indore, India. Specializing in Python, Django, AWS Cloud Architecture, DevOps Pipelines (Docker & Kubernetes), and Agentic AI.
+> Official website and portfolio of Om Tiwari, a Software Engineer based in Indore, India. Specializing in Python, Django, AWS Cloud Architecture, DevOps Pipelines (Docker & Kubernetes), and Agentic AI.
 
 ## Canonical Domain
 - https://omtiwari.dev
