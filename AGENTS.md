@@ -55,8 +55,7 @@ my-portfolio/
     ├── js/
     │   └── main.js          # Shared interactivity: multi-color canvas particles, theme toggle, mobile drawer nav, scroll reveal, project search/filter, typing animation, toast notifications, keyboard shortcuts, rAF card spotlight, custom cursor
     └── img/
-        ├── favicon.png      # PNG favicon (legacy)
-        ├── favicon.svg      # SVG favicon (preferred) - gradient rounded-square with "OM" in system cursive font
+        ├── favicon.ico      # Standard ICO favicon (single favicon to prevent multiple network requests)
         ├── AWS Badge.png    # AWS Credly certification badge
         ├── Agentic Project.png
         ├── Agentic.png
@@ -247,7 +246,7 @@ This created a visible flash of two different "OM" renderings on the preloader s
 
 ### Favicon & Image Assets
 
-The site uses a full favicon suite (`favicon.svg`, `favicon.png`, `favicon.ico`, `apple-touch-icon-180.png`). The SVG favicon uses system cursive font fallbacks (`Segoe Script`, `Comic Sans MS`, `Brush Script MT`) for cross-browser rendering since external Google Fonts cannot be fetched inside SVG favicons. High-resolution brand assets (`logo-512.png`, `logo-1024.png`) are located in `assets/img/`.
+The site uses a single standardized `favicon.ico` (located in `assets/img/favicon.ico` and site root) to avoid duplicate network roundtrips. Legacy `favicon.png` and `favicon.svg` were removed to prevent browsers from requesting multiple redundant favicon files. High-resolution brand assets (`logo-512.png`, `logo-1024.png`) are located in `assets/img/`.
 
 ### Mobile Drawer Navigation & Hamburger Icon Enhancements
 
