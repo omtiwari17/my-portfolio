@@ -1,0 +1,18 @@
+# Om Tiwari
+
+> Official website and portfolio of Om Tiwari, a Cloud Architect and Software Engineer based in Indore, India. Specializing in Python, Django, AWS Cloud Architecture, DevOps Pipelines (Docker & Kubernetes), and Agentic AI.
+
+## Canonical Domain
+- https://omtiwari.dev
+
+## Pages
+- [Home](https://omtiwari.dev/): Engineering portfolio overview, core competencies, and featured systems.
+- [About](https://omtiwari.dev/about.html): Background, education timeline at Medi-Caps University, and AWS & AI certifications.
+- [Projects](https://omtiwari.dev/projects.html): Production systems including Kubernetes manufacturing deployment, live cricket WinPulse analytics, and multi-agent AI.
+- [Resume](https://omtiwari.dev/resume.html): Comprehensive technical resume, skill breakdown, and credential verifications.
+- [Contact](https://omtiwari.dev/contact.html): Official communication channels and social links.
+
+## Official Handles
+- GitHub: https://github.com/omtiwari17
+- LinkedIn: https://www.linkedin.com/in/tiwariom/
+- Email: hello@omtiwari.dev
