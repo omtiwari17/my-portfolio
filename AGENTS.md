@@ -43,7 +43,7 @@ my-portfolio/
 ├── AGENTS.md                # AI agent context (this file)
 ├── index.html               # Homepage - hero, live status, core competencies, featured projects, experience
 ├── about.html               # About - bio, education timeline, 6 cert cards, core values
-├── projects.html            # Project gallery - 7 projects with real-time search & category filter tabs
+├── projects.html            # Project gallery - 8 projects with real-time search & category filter tabs
 ├── resume.html              # Interactive resume - 2-column digital resume + certs grid
 ├── contact.html             # Contact form (Formspree AJAX) + email copy box + social grid
 ├── 404.html                 # Custom 404 error page with animated floating astronaut & quick links
@@ -64,6 +64,7 @@ my-portfolio/
         ├── Find My Book - Copy.png
         ├── Find My Book.png
         ├── k8s-deploy.png
+        ├── memora.png       # Memora personal external memory system screenshot
         ├── multi-agent.png
         ├── osts.png
         ├── pds org.png
@@ -130,7 +131,7 @@ All interactivity is managed in a single, robust ES6 file without external libra
 | **Scroll Reveal** | `IntersectionObserver` adds `.is-visible` to `.reveal` elements at low threshold (`0.05`). On mobile (<=600px), CSS disables 3D `translateY` jumps to prevent scroll stutter. |
 | **Multi-Color Canvas Particles** | HTML5 Canvas (`#bgParticles`) rendering 75 particles (desktop) / 35 particles (mobile) with multi-color dots (Cyan, Indigo, Violet, Pink), dynamic RGBA color-mixing connection lines, interactive mouse cursor connection lines, and `touchstart`/`touchmove`/`touchend` reset handlers. |
 | **Keyboard Shortcuts Manager** | Global `keydown` listener handling <kbd>T</kbd> (Theme), <kbd>/</kbd> (Search), <kbd>Esc</kbd> (Clear/Close), <kbd>H</kbd>/<kbd>A</kbd>/<kbd>P</kbd>/<kbd>R</kbd>/<kbd>C</kbd> (Navigation), and <kbd>?</kbd> (Help Cheat Sheet Toast). Ignored inside form inputs. |
-| **Project Search & Filter** | Real-time text search + category filter tabs (`all`, `python`, `web`, `ai`, `devops`, `cloud`) with dynamic visible item count display (`Showing X of 7 Projects`). |
+| **Project Search & Filter** | Real-time text search + category filter tabs (`all`, `python`, `web`, `ai`, `devops`, `cloud`) with dynamic visible item count display (`Showing X of 8 Projects`). |
 | **Formspree AJAX** | Contact form submission via `fetch` API POST to Formspree endpoint (`https://formspree.io/f/mkgwrrar`) with inline status message and toast feedback. |
 | **Hero Typing Animation** | Types JSON code into `.code-block pre code` character-by-character when hero section enters viewport. Code block uses `min-height: 180px` on mobile to prevent CLS. |
 | **Card Spotlight Tracking** | `mousemove` handler updates `--mouse-x` and `--mouse-y` CSS variables on `.card` elements, throttled via `requestAnimationFrame` and marked `{ passive: true }`. |
