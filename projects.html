@@ -100,12 +100,58 @@
             <button class="btn small outline ripple" data-filter="devops">DevOps</button>
             <button class="btn small outline ripple" data-filter="cloud">Cloud</button>
           </div>
-          <div class="project-count" id="projectCount">Showing 7 of 7 Projects</div>
+          <div class="project-count" id="projectCount">Showing 8 of 8 Projects</div>
         </div>
 
         <!-- Project Grid -->
         <div class="grid cards-3 project-grid">
-          <!-- Project 1 -->
+          <!-- Project 1: Memora -->
+          <article
+            class="card project hover glow tilt"
+            data-tags="web python django"
+            id="memora-vault"
+          >
+            <img
+              class="project-img"
+              src="assets/img/memora.png"
+              alt="Memora Personal External Memory System preview"
+              loading="lazy"
+            />
+            <div class="project-header-row">
+              <h3>Memora — Personal Memory Vault</h3>
+              <span class="project-badge flagship">Flagship</span>
+            </div>
+            <p>
+              Cross-device external memory system engineered for zero-friction capture of ideas, quotes, links, tasks, and snippets into a private glassmorphic vault.
+            </p>
+            <ul class="bullets">
+              <li>Universal capture with sub-200ms algorithmic auto-categorization into 8+ smart vaults</li>
+              <li>Type-aware visual card layouts for quotes, code syntax blocks, cinema ratings, and tasks</li>
+              <li>Zero-friction authentication with unique handles and encrypted 6-digit PIN vault security</li>
+              <li>Engineered with Python 3.11, Django 5, and HTMX for zero-latency reactive DOM updates</li>
+            </ul>
+            <div class="tags" style="margin-bottom: 1rem;">
+              <span class="pill">Django 5</span><span class="pill">Python</span><span class="pill">HTMX</span><span class="pill">Tailwind</span><span class="pill">PostgreSQL</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a
+                class="btn small"
+                href="https://github.com/omtiwari17/Memora"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+              <a
+                class="btn small outline"
+                href="https://memora.omtiwari.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Live Demo ↗</a
+              >
+            </div>
+          </article>
+
+          <!-- Project 2 -->
           <article
             class="card project hover glow tilt"
             data-tags="web python django cloud"

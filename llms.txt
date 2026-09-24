@@ -8,7 +8,7 @@
 ## Pages
 - [Home](https://omtiwari.dev/): Engineering portfolio overview, core competencies, and featured systems.
 - [About](https://omtiwari.dev/about.html): Background, education timeline at Medi-Caps University, and AWS & AI certifications.
-- [Projects](https://omtiwari.dev/projects.html): Production systems including Kubernetes manufacturing deployment, live cricket WinPulse analytics, and multi-agent AI.
+- [Projects](https://omtiwari.dev/projects.html): Production systems including Memora personal memory vault, Kubernetes manufacturing deployment, live cricket WinPulse analytics, and multi-agent AI.
 - [Resume](https://omtiwari.dev/resume.html): Comprehensive technical resume, skill breakdown, and credential verifications.
 - [Contact](https://omtiwari.dev/contact.html): Official communication channels and social links.
 
