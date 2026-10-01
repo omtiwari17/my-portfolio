@@ -147,14 +147,14 @@ The portfolio includes an active keyboard shortcuts manager accessible on all pa
 | Key | Shortcut Description |
 |---|---|
 | <kbd>T</kbd> | Toggle Dark / Light Theme (with Toast feedback) |
-| <kbd>/</kbd> | Focus & select Project Search Bar input on `projects.html` |
+| <kbd>/</kbd> | Focus & select Project Search Bar input on `projects` page |
 | <kbd>Esc</kbd> | Clear search input & blur focus **or** close mobile drawer menu |
 | <kbd>?</kbd> | Display Keyboard Shortcuts Cheat Sheet Toast |
-| <kbd>H</kbd> | Quick Navigate to **Home** (`index.html`) |
-| <kbd>A</kbd> | Quick Navigate to **About** (`about.html`) |
-| <kbd>P</kbd> | Quick Navigate to **Projects** (`projects.html`) |
-| <kbd>R</kbd> | Quick Navigate to **Resume** (`resume.html`) |
-| <kbd>C</kbd> | Quick Navigate to **Contact** (`contact.html`) |
+| <kbd>H</kbd> | Quick Navigate to **Home** (`/`) |
+| <kbd>A</kbd> | Quick Navigate to **About** (`about`) |
+| <kbd>P</kbd> | Quick Navigate to **Projects** (`projects`) |
+| <kbd>R</kbd> | Quick Navigate to **Resume** (`resume`) |
+| <kbd>C</kbd> | Quick Navigate to **Contact** (`contact`) |
 
 > ℹ️ *Note: Single-key shortcuts are automatically suppressed while user focus is inside form input fields (`<input>`, `<textarea>`, `<select>`).*
 
@@ -177,15 +177,15 @@ Every HTML page inside `<body>` follows this exact standard template:
 
   <!-- 4. Sticky Capsule Header -->
   <header class="site-header reveal-down">
-    <a class="brand" href="index.html">
+    <a class="brand" href="/">
       <span class="logo glow">OM</span> <strong>Om Tiwari</strong>
     </a>
     <nav class="nav" id="nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="resume.html">Resume</a>
-      <a href="contact.html">Contact</a>
+      <a href="/">Home</a>
+      <a href="about">About</a>
+      <a href="projects">Projects</a>
+      <a href="resume">Resume</a>
+      <a href="contact">Contact</a>
     </nav>
     <div class="header-actions">
       <button class="btn small outline" id="themeToggle" aria-label="Toggle theme">
