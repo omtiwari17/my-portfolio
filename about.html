@@ -17,15 +17,38 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About Om Tiwari",
-    "url": "https://omtiwari.dev/about.html",
-    "description": "About Om Tiwari - B.Tech Computer Science graduate, skills, education, certifications, and engineering values.",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Om Tiwari",
-      "url": "https://omtiwari.dev"
-    }
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://omtiwari.dev/about.html#webpage",
+        "url": "https://omtiwari.dev/about.html",
+        "name": "About Om Tiwari",
+        "description": "About Om Tiwari - Software Engineer, B.Tech Computer Science graduate, skills, education, certifications, and engineering values.",
+        "mainEntity": {
+          "@id": "https://omtiwari.dev/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://omtiwari.dev/#person",
+        "name": "Om Tiwari",
+        "givenName": "Om",
+        "familyName": "Tiwari",
+        "url": "https://omtiwari.dev",
+        "image": "https://omtiwari.dev/assets/img/logo-512.png",
+        "jobTitle": "Software Engineer",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Medicaps University",
+          "location": "Indore, India"
+        },
+        "sameAs": [
+          "https://github.com/omtiwari17",
+          "https://www.linkedin.com/in/tiwariom/",
+          "https://x.com/_omtiwari_"
+        ]
+      }
+    ]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
