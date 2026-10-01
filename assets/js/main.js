@@ -7,10 +7,13 @@ const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ===== ACTIVE NAVIGATION LINK =====
-const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+const rawPath = window.location.pathname.replace(/\/index(\.html)?$/, '').replace(/\/$/, '');
+const currentSlug = rawPath.split('/').pop() || '';
+
 $$('.nav a').forEach(link => {
-  const href = link.getAttribute('href');
-  if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+  const rawHref = (link.getAttribute('href') || '').replace(/^\//, '').replace(/\.html$/, '');
+  const isHome = currentSlug === '' || currentSlug === 'index';
+  if ((isHome && (rawHref === '' || rawHref === 'index')) || (rawHref && rawHref === currentSlug)) {
     link.classList.add('active');
   }
 });
@@ -170,11 +173,15 @@ document.addEventListener('keydown', (e) => {
   }
 
   // Page Navigation Shortcuts
-  if (key === 'h' && !window.location.pathname.endsWith('index.html')) { window.location.href = 'index.html'; }
-  else if (key === 'a' && !window.location.pathname.endsWith('about.html')) { window.location.href = 'about.html'; }
-  else if (key === 'p' && !window.location.pathname.endsWith('projects.html')) { window.location.href = 'projects.html'; }
-  else if (key === 'r' && !window.location.pathname.endsWith('resume.html')) { window.location.href = 'resume.html'; }
-  else if (key === 'c' && !window.location.pathname.endsWith('contact.html')) { window.location.href = 'contact.html'; }
+  const isCurrent = (slug) => {
+    return currentSlug === slug || (slug === '' && (currentSlug === '' || currentSlug === 'index'));
+  };
+
+  if (key === 'h' && !isCurrent('')) { window.location.href = '/'; }
+  else if (key === 'a' && !isCurrent('about')) { window.location.href = 'about'; }
+  else if (key === 'p' && !isCurrent('projects')) { window.location.href = 'projects'; }
+  else if (key === 'r' && !isCurrent('resume')) { window.location.href = 'resume'; }
+  else if (key === 'c' && !isCurrent('contact')) { window.location.href = 'contact'; }
 });
 
 // Click handler for shortcut badge button (For non-tech users / touch devices)
