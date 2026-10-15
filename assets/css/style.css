@@ -897,12 +897,14 @@ kbd {
 }
 
 /* ===== CARD LISTS & SKILLS ===== */
-.card ul {
+.card ul,
+.bullets {
   padding-left: 1.35rem;
   margin: 0.5rem 0;
 }
 
-.card ul li {
+.card ul li,
+.bullets li {
   margin: 0.35rem 0;
   font-size: 0.92rem;
   color: var(--muted);
@@ -915,7 +917,8 @@ kbd {
 .bullets.two-col {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.3rem 1rem;
+  gap: 0.4rem 1.25rem;
+  padding-left: 1.35rem;
 }
 
 .card.skill header {
@@ -1577,7 +1580,7 @@ input::placeholder, textarea::placeholder {
   .skills-grid   { grid-template-columns: 1fr; }
   .resume-grid   { grid-template-columns: 1fr; grid-template-areas: "left" "right" "certs"; }
   .certs-row     { grid-template-columns: 1fr; }
-  .bullets.two-col { grid-template-columns: 1fr; }
+  .bullets.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem 1.25rem; }
 
   .hero-art .card-xl {
     min-height: auto;
@@ -1806,6 +1809,10 @@ input::placeholder, textarea::placeholder {
   }
 
   .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .bullets.two-col {
     grid-template-columns: 1fr;
   }
 }
