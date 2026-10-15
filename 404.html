@@ -164,25 +164,33 @@
 
       /* 404 Page - Light Mode Adaptations */
       .light .astronaut-svg {
-        filter: drop-shadow(0 12px 32px rgba(2, 132, 199, 0.18));
+        filter: drop-shadow(0 14px 34px rgba(2, 132, 199, 0.22));
       }
       .light .astro-helmet {
-        fill: #f1f5f9;
+        fill: #ffffff;
         stroke: #0284c7;
       }
       .light .astro-visor {
-        fill: #0f172a;
+        fill: #e0f2fe;
+        stroke: #bae6fd;
+        stroke-width: 1.5;
       }
       .light .astro-glare {
-        fill: rgba(255, 255, 255, 0.22);
+        fill: rgba(255, 255, 255, 0.9);
+      }
+      .light .astro-eye-left {
+        fill: #0284c7 !important;
+      }
+      .light .astro-eye-right {
+        fill: #7c3aed !important;
       }
       .light .astro-body,
       .light .astro-limb {
-        fill: #e2e8f0;
+        fill: #ffffff;
         stroke: #94a3b8;
       }
       .light .astro-pack {
-        fill: #cbd5e1;
+        fill: #e0f2fe;
         stroke: #94a3b8;
       }
       .light .astro-antenna {
@@ -346,10 +354,10 @@
             <circle class="astro-helmet" cx="100" cy="72" r="42" stroke-width="2.5"/>
             <circle class="astro-visor" cx="100" cy="72" r="34"/>
             <ellipse class="astro-glare" cx="92" cy="65" rx="14" ry="10" transform="rotate(-15 92 65)"/>
-            <circle cx="90" cy="72" r="4" fill="#38bdf8">
+            <circle class="astro-eye-left" cx="90" cy="72" r="4" fill="#38bdf8">
               <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="110" cy="72" r="4" fill="#c084fc">
+            <circle class="astro-eye-right" cx="110" cy="72" r="4" fill="#c084fc">
               <animate attributeName="opacity" values="1;0.3;1" dur="3s" begin="0.5s" repeatCount="indefinite"/>
             </circle>
             <rect class="astro-body" x="72" y="110" width="56" height="52" rx="14" stroke-width="2"/>
@@ -360,7 +368,7 @@
             </rect>
             <rect class="astro-limb" x="78" y="158" width="14" height="28" rx="6" stroke-width="1.5" transform="rotate(8 85 172)"/>
             <rect class="astro-limb" x="108" y="158" width="14" height="28" rx="6" stroke-width="1.5" transform="rotate(-8 115 172)"/>
-            <line x1="100" y1="30" x2="100" y2="16" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+            <line class="astro-antenna" x1="100" y1="30" x2="100" y2="16" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
             <circle cx="100" cy="13" r="4" fill="#c084fc">
               <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
               <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
