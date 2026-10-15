@@ -223,7 +223,7 @@ Every HTML page inside `<body>` follows this exact standard template:
 ## Deployment & Branching Guidelines
 
 - **Hosting Platform:** GitHub Pages (auto-deployed from `main` branch)
-- **Custom Domain:** `omtiwari.dev` (`CNAME` file) — **CRITICAL DOMAIN RULE:** The only valid live domain is `omtiwari.dev`. Do NOT use `omtiwari.tech` (old/legacy domain).
+- **Custom Domain:** `omtiwari.dev` (`CNAME` file) - **CRITICAL DOMAIN RULE:** The only valid live domain is `omtiwari.dev`. Do NOT use `omtiwari.tech` (old/legacy domain).
 - **Development Branch:** `dev` - **ALL commits, experiments, and fixes MUST be performed on `dev` / `origin/dev`.**
 - **STRICT MERGE POLICY:**  
   - **NEVER merge `dev` into `main` unless the user explicitly requests a branch merge.**  
