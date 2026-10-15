@@ -1427,17 +1427,27 @@ input::placeholder, textarea::placeholder {
   background: rgba(0, 0, 0, 0.06);
 }
 
-.light .btn:not(.outline) {
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+.light .btn:not(.outline),
+.light a.btn:not(.outline),
+.light button.btn:not(.outline) {
+  color: #ffffff !important;
+  background: var(--accent) !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28) !important;
 }
 
-.light .btn:not(.outline):hover {
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.38);
+.light .btn:not(.outline):hover,
+.light a.btn:not(.outline):hover,
+.light button.btn:not(.outline):hover {
+  background: var(--accent-hover) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.38) !important;
 }
 
-.light .btn:not(.outline) svg {
-  fill: currentColor;
+.light .btn:not(.outline) svg,
+.light a.btn:not(.outline) svg,
+.light button.btn:not(.outline) svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
 }
 
 .light .btn.outline {
@@ -1541,6 +1551,21 @@ input::placeholder, textarea::placeholder {
 }
 
 .light #bgParticles { opacity: 0.25; }
+
+.light .cursor-dot {
+  mix-blend-mode: normal !important;
+  background: var(--accent) !important;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.6) !important;
+}
+
+.light .cursor-ring {
+  border-color: rgba(2, 132, 199, 0.45) !important;
+}
+
+.light .cursor-ring.hover {
+  border-color: rgba(124, 58, 237, 0.75) !important;
+  background: rgba(2, 132, 199, 0.08) !important;
+}
 
 /* ===== RESPONSIVE BREAKPOINTS (Mobile-First Perfection) ===== */
 #menuToggle { display: none; }

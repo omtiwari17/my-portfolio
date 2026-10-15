@@ -167,7 +167,7 @@
         filter: drop-shadow(0 12px 32px rgba(2, 132, 199, 0.18));
       }
       .light .astro-helmet {
-        fill: #ffffff;
+        fill: #f1f5f9;
         stroke: #0284c7;
       }
       .light .astro-visor {
@@ -178,12 +178,15 @@
       }
       .light .astro-body,
       .light .astro-limb {
-        fill: #ffffff;
-        stroke: #cbd5e1;
+        fill: #e2e8f0;
+        stroke: #94a3b8;
       }
       .light .astro-pack {
-        fill: #f1f5f9;
-        stroke: #cbd5e1;
+        fill: #cbd5e1;
+        stroke: #94a3b8;
+      }
+      .light .astro-antenna {
+        stroke: #0284c7;
       }
       .light .orbit-ring {
         border-color: rgba(2, 132, 199, 0.25);
@@ -204,10 +207,61 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
         color: #334155;
       }
+      .error-code-block .code-block-header {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.55rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .light .error-code-block .code-block-header {
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .error-code-block .code-filename {
+        font-family: var(--font-code);
+        font-size: 0.75rem;
+        color: var(--muted-2);
+        margin-left: 0.35rem;
+        font-weight: 500;
+      }
       .light .error-code-block .keyword { color: #7c3aed; }
       .light .error-code-block .string  { color: #059669; }
       .light .error-code-block .number  { color: #0284c7; }
       .light .error-code-block .comment { color: #64748b; }
+
+      /* Primary Button Contrast Fix in Light Mode */
+      .light .error-actions .btn:not(.outline),
+      .light a.btn:not(.outline) {
+        color: #ffffff !important;
+        background: #0284c7 !important;
+        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28) !important;
+      }
+      .light .error-actions .btn:not(.outline):hover,
+      .light a.btn:not(.outline):hover {
+        background: #0369a1 !important;
+        color: #ffffff !important;
+        box-shadow: 0 8px 24px rgba(2, 132, 199, 0.38) !important;
+      }
+      .light .error-actions .btn:not(.outline) svg,
+      .light a.btn:not(.outline) svg {
+        fill: #ffffff !important;
+        color: #ffffff !important;
+      }
+
+      /* Custom Cursor in Light Mode */
+      .light .cursor-dot {
+        mix-blend-mode: normal !important;
+        background: #0284c7 !important;
+        box-shadow: 0 0 10px rgba(2, 132, 199, 0.6) !important;
+      }
+      .light .cursor-ring {
+        border-color: rgba(2, 132, 199, 0.45) !important;
+      }
+      .light .cursor-ring.hover {
+        border-color: rgba(124, 58, 237, 0.75) !important;
+        background: rgba(2, 132, 199, 0.08) !important;
+      }
 
       .quick-links {
         display: flex;
@@ -323,6 +377,12 @@
 
         <!-- Error Code Snippet -->
         <div class="error-code-block">
+          <div class="code-block-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">router.js</span>
+          </div>
           <span class="comment">// Page route lookup failed</span><br>
           <span class="keyword">const</span> path = <span class="string">"${window.location.pathname}"</span>;<br>
           <span class="keyword">if</span> (!routes.includes(path)) {<br>
