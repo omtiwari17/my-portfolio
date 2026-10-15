@@ -1424,6 +1424,19 @@ input::placeholder, textarea::placeholder {
   background: rgba(0, 0, 0, 0.06);
 }
 
+.light .btn:not(.outline) {
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+}
+
+.light .btn:not(.outline):hover {
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.38);
+}
+
+.light .btn:not(.outline) svg {
+  fill: currentColor;
+}
+
 .light .btn.outline {
   background: #ffffff;
   color: var(--heading);

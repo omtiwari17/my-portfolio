@@ -141,6 +141,74 @@
       .error-code-block .number  { color: var(--accent); }
       .error-code-block .comment { color: var(--muted-2); font-style: italic; }
 
+      /* Astronaut styling - Dark Mode (Default) */
+      .astro-helmet {
+        fill: #0b0f19;
+        stroke: #38bdf8;
+      }
+      .astro-visor {
+        fill: #111827;
+      }
+      .astro-glare {
+        fill: rgba(56, 189, 248, 0.15);
+      }
+      .astro-body,
+      .astro-limb {
+        fill: #0b0f19;
+        stroke: #1f2937;
+      }
+      .astro-pack {
+        fill: #111827;
+        stroke: #1f2937;
+      }
+
+      /* 404 Page - Light Mode Adaptations */
+      .light .astronaut-svg {
+        filter: drop-shadow(0 12px 32px rgba(2, 132, 199, 0.18));
+      }
+      .light .astro-helmet {
+        fill: #ffffff;
+        stroke: #0284c7;
+      }
+      .light .astro-visor {
+        fill: #0f172a;
+      }
+      .light .astro-glare {
+        fill: rgba(255, 255, 255, 0.22);
+      }
+      .light .astro-body,
+      .light .astro-limb {
+        fill: #ffffff;
+        stroke: #cbd5e1;
+      }
+      .light .astro-pack {
+        fill: #f1f5f9;
+        stroke: #cbd5e1;
+      }
+      .light .orbit-ring {
+        border-color: rgba(2, 132, 199, 0.25);
+      }
+      .light .orbit-ring::before {
+        box-shadow: 0 0 12px rgba(2, 132, 199, 0.5);
+      }
+      .light .error-code {
+        background: linear-gradient(135deg, #0284c7 0%, #7c3aed 50%, #0284c7 100%);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .light .error-code-block {
+        background: #ffffff;
+        border-color: #cbd5e1;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+        color: #334155;
+      }
+      .light .error-code-block .keyword { color: #7c3aed; }
+      .light .error-code-block .string  { color: #059669; }
+      .light .error-code-block .number  { color: #0284c7; }
+      .light .error-code-block .comment { color: #64748b; }
+
       .quick-links {
         display: flex;
         flex-wrap: wrap;
@@ -160,6 +228,10 @@
       .quick-links a:hover {
         color: var(--heading);
         background: rgba(255, 255, 255, 0.08);
+      }
+
+      .light .quick-links a:hover {
+        background: rgba(0, 0, 0, 0.06);
       }
 
       .quick-links .sep {
@@ -217,23 +289,23 @@
         <div class="error-visual">
           <div class="orbit-ring"></div>
           <svg class="astronaut-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="100" cy="72" r="42" fill="#0b0f19" stroke="#38bdf8" stroke-width="2.5"/>
-            <circle cx="100" cy="72" r="34" fill="#111827"/>
-            <ellipse cx="92" cy="65" rx="14" ry="10" fill="rgba(56,189,248,0.15)" transform="rotate(-15 92 65)"/>
+            <circle class="astro-helmet" cx="100" cy="72" r="42" stroke-width="2.5"/>
+            <circle class="astro-visor" cx="100" cy="72" r="34"/>
+            <ellipse class="astro-glare" cx="92" cy="65" rx="14" ry="10" transform="rotate(-15 92 65)"/>
             <circle cx="90" cy="72" r="4" fill="#38bdf8">
               <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
             </circle>
             <circle cx="110" cy="72" r="4" fill="#c084fc">
               <animate attributeName="opacity" values="1;0.3;1" dur="3s" begin="0.5s" repeatCount="indefinite"/>
             </circle>
-            <rect x="72" y="110" width="56" height="52" rx="14" fill="#0b0f19" stroke="#1f2937" stroke-width="2"/>
-            <rect x="60" y="118" width="14" height="34" rx="6" fill="#111827" stroke="#1f2937" stroke-width="1.5"/>
-            <rect x="48" y="120" width="28" height="12" rx="6" fill="#0b0f19" stroke="#1f2937" stroke-width="1.5" transform="rotate(-20 62 126)"/>
-            <rect x="124" y="108" width="28" height="12" rx="6" fill="#0b0f19" stroke="#1f2937" stroke-width="1.5" transform="rotate(30 138 114)">
+            <rect class="astro-body" x="72" y="110" width="56" height="52" rx="14" stroke-width="2"/>
+            <rect class="astro-pack" x="60" y="118" width="14" height="34" rx="6" stroke-width="1.5"/>
+            <rect class="astro-limb" x="48" y="120" width="28" height="12" rx="6" stroke-width="1.5" transform="rotate(-20 62 126)"/>
+            <rect class="astro-limb" x="124" y="108" width="28" height="12" rx="6" stroke-width="1.5" transform="rotate(30 138 114)">
               <animateTransform attributeName="transform" type="rotate" values="30 138 114;15 138 114;30 138 114" dur="1.5s" repeatCount="indefinite"/>
             </rect>
-            <rect x="78" y="158" width="14" height="28" rx="6" fill="#0b0f19" stroke="#1f2937" stroke-width="1.5" transform="rotate(8 85 172)"/>
-            <rect x="108" y="158" width="14" height="28" rx="6" fill="#0b0f19" stroke="#1f2937" stroke-width="1.5" transform="rotate(-8 115 172)"/>
+            <rect class="astro-limb" x="78" y="158" width="14" height="28" rx="6" stroke-width="1.5" transform="rotate(8 85 172)"/>
+            <rect class="astro-limb" x="108" y="158" width="14" height="28" rx="6" stroke-width="1.5" transform="rotate(-8 115 172)"/>
             <line x1="100" y1="30" x2="100" y2="16" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
             <circle cx="100" cy="13" r="4" fill="#c084fc">
               <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
