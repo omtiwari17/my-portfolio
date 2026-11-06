@@ -26,7 +26,7 @@ Personal portfolio website built from scratch with **HTML5, CSS3, and vanilla Ja
 | 🎓 **Education & Skills** | Academic background and technical skill showcase |
 | 💼 **Experience** | Internship and work highlights |
 | 🛠️ **Projects** | Selected projects with images, tech stacks, and descriptions |
-| 📄 **Resume** | One-click downloadable PDF |
+| 📄 **Resume** | One-click downloadable PDF & interactive credentials |
 | 📬 **Contact** | Simple contact form to reach out directly |
 | 🌗 **Dark / Light Mode** | Toggle for comfortable viewing in any environment |
 
@@ -34,11 +34,11 @@ Personal portfolio website built from scratch with **HTML5, CSS3, and vanilla Ja
 
 ## 🛠️ Tech Stack
 
-- **Markup & Logic:** HTML5, CSS3, JavaScript (ES6+)
-- **Styling:** Custom CSS with animations, transitions, and responsive layouts
-- **Icons:** Font Awesome
-- **Fonts:** Google Fonts
-- **Hosting:** GitHub Pages
+- **Markup & Logic:** Semantic HTML5, CSS3 Custom Properties, Vanilla JavaScript (ES6+)
+- **Styling:** Custom CSS design system, Glassmorphism, animations, responsive layouts
+- **Icons:** Inline SVGs (zero external icon CDNs)
+- **Fonts:** Google Fonts (Inter, Outfit, JetBrains Mono)
+- **Hosting:** GitHub Pages with custom domain (`omtiwari.dev`)
 
 ---
 
@@ -59,12 +59,16 @@ open index.html   # or just open in your browser
 
 ```
 my-portfolio/
-├── index.html          # Main entry point
-├── style.css           # Global styles & theming
-├── script.js           # Interactivity & dark mode logic
+├── index.html          # Homepage & featured systems
+├── about.html          # Background, education & certifications
+├── projects.html       # Searchable & filterable project gallery
+├── resume.html         # Digital resume & credential index
+├── contact.html        # Contact form (Formspree AJAX)
+├── 404.html            # Custom error page with interactive canvas & mascot
 ├── assets/
-│   ├── images/         # Project screenshots, profile photo
-│   └── resume.pdf      # Downloadable resume
+│   ├── css/style.css   # Global design tokens, layout & theme styles
+│   ├── js/main.js      # Theme toggle, canvas particles, shortcuts & navigation
+│   └── img/            # Project previews, screenshots & credentials
 └── README.md
 ```
 
@@ -74,7 +78,7 @@ my-portfolio/
 
 | Platform | Link |
 |---|---|
-| 📧 Email | [hello@omtiwari.dev](mailto:hello@omtiwari.dev) |
+| 📧 Contact | [omtiwari.dev/contact](https://omtiwari.dev/contact) |
 | 💼 LinkedIn | [linkedin.com/in/tiwariom](https://www.linkedin.com/in/tiwariom/) |
 | 🐙 GitHub | [github.com/omtiwari17](https://github.com/omtiwari17) |
 
