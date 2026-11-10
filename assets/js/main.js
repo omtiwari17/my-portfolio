@@ -192,7 +192,8 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ===== FORMSPREE AJAX SUBMISSION =====
+// ===== CLOUDFLARE WORKER AJAX SUBMISSION =====
+// (Formspree logic is kept commented below if ever needed to revert)
 const contactForm = $('#contactForm');
 const formStatus = $('#formStatus');
 
@@ -206,12 +207,26 @@ if (contactForm) {
     submitBtn.textContent = 'Sending...';
 
     try {
-      const data = new FormData(contactForm);
+      // --- Cloudflare Worker API Submission (Active) ---
+      const formData = new FormData(contactForm);
+      const payload = Object.fromEntries(formData.entries());
       const response = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json' 
+        },
+        body: JSON.stringify(payload)
+      });
+
+      /* --- FORMSPREE FALLBACK (Uncomment to revert) ---
+      const data = new FormData(contactForm);
+      const response = await fetch('https://formspree.io/f/mkgwrrar', {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' }
       });
+      -------------------------------------------------- */
 
       if (response.ok) {
         if (formStatus) {
