@@ -322,46 +322,6 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove('show'), 3500);
 }
 
-// ===== EMAIL OBFUSCATION & INTERACTION (ANTI-BOT) =====
-function getAssembledEmail(el) {
-  const user = el?.dataset?.user || 'hello';
-  const domain = el?.dataset?.domain || 'omtiwari.dev';
-  return `${user}@${domain}`;
-}
-
-// Reveal clean email on contact page for real browser users
-const emailDisplay = $('#emailDisplay');
-if (emailDisplay) {
-  emailDisplay.textContent = getAssembledEmail(emailDisplay);
-}
-
-// Copy email button
-const copyEmailBtn = $('#copyEmailBtn');
-if (copyEmailBtn) {
-  copyEmailBtn.addEventListener('click', () => {
-    const email = getAssembledEmail(emailDisplay || copyEmailBtn);
-    navigator.clipboard.writeText(email).then(() => {
-      showToast('Email address copied to clipboard!');
-    }).catch(() => {
-      showToast(`Email: ${email}`);
-    });
-  });
-}
-
-// Dynamic email icon interaction (populates mailto: on interaction, keeps raw HTML clean)
-$$('.email-link').forEach(link => {
-  const setMailto = () => {
-    const email = getAssembledEmail(link);
-    link.href = `mailto:${email}?subject=Hello%20Om&body=Hi%20Om,%0D%0A%0D%0A`;
-  };
-
-  link.addEventListener('mouseenter', setMailto, { passive: true });
-  link.addEventListener('focus', setMailto, { passive: true });
-  link.addEventListener('click', () => {
-    setMailto();
-  });
-});
-
 // ===== CARD SPOTLIGHT MOUSE TRACKING =====
 const cards = $$('.card');
 let isTrackingSpotlight = false;
