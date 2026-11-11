@@ -192,6 +192,49 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// ===== EMAIL VALIDATION (Anti-Bogus & Disposable Block, Supports All Custom Domains) =====
+function validateContactEmail(email) {
+  const trimmed = (email || '').trim().toLowerCase();
+  
+  // RFC-compliant structural pattern (requires user, @, domain, and 2+ char TLD)
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+  if (!emailRegex.test(trimmed)) {
+    return { valid: false, message: 'Please enter a valid email address with a domain (e.g. you@company.com).' };
+  }
+
+  const parts = trimmed.split('@');
+  const localPart = parts[0];
+  const domain = parts[1];
+
+  const domainParts = domain.split('.');
+  const tld = domainParts[domainParts.length - 1];
+  if (tld.length < 2) {
+    return { valid: false, message: 'Please enter a valid domain extension (e.g. .com, .io, .tech, .dev).' };
+  }
+
+  // Common obvious fake / dummy placeholders
+  const obviousFakes = [
+    'test@test.com', 'asdf@asdf.com', 'fake@fake.com', 'a@a.com', '123@123.com',
+    'admin@admin.com', 'no@no.com', 'none@none.com', 'xyz@xyz.com', 'user@user.com'
+  ];
+  if (obviousFakes.includes(trimmed) || localPart === domainParts[0]) {
+    return { valid: false, message: 'Please provide a genuine email address so I can reply back to you.' };
+  }
+
+  // Temporary / disposable throwaway email providers
+  const disposableDomains = [
+    'mailinator.com', 'tempmail.com', '10minutemail.com', 'guerrillamail.com',
+    'sharklasers.com', 'throwawaymail.com', 'yopmail.com', 'trashmail.com',
+    'getairmail.com', 'dispostable.com', 'temp-mail.org', 'mohmal.com',
+    'burnermail.io', 'fakemailgenerator.com', 'generator.email', 'crazymailing.com'
+  ];
+  if (disposableDomains.includes(domain)) {
+    return { valid: false, message: 'Temporary disposable emails are not accepted. Please use a work or personal email.' };
+  }
+
+  return { valid: true };
+}
+
 // ===== CLOUDFLARE WORKER AJAX SUBMISSION =====
 // (Formspree logic is kept commented below if ever needed to revert)
 const contactForm = $('#contactForm');
@@ -203,6 +246,20 @@ if (contactForm) {
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     
+    const emailInput = contactForm.querySelector('#email');
+    if (emailInput) {
+      const emailCheck = validateContactEmail(emailInput.value);
+      if (!emailCheck.valid) {
+        if (formStatus) {
+          formStatus.style.color = '#f87171';
+          formStatus.textContent = '✕ ' + emailCheck.message;
+        }
+        emailInput.focus();
+        showToast(emailCheck.message);
+        return;
+      }
+    }
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
